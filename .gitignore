@@ -1,0 +1,9 @@
+_concept
+_corporateDesign
+_alt
+
+.env
+.DS_Store
+.idea/
+__pycache__/
+.venv/

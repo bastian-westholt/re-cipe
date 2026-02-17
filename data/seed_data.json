@@ -1,0 +1,126 @@
+[
+  {
+    "recipe": {
+      "title": "Spaghetti Carbonara",
+      "description": "Authentisches römisches Pasta-Gericht mit Guanciale, Eigelb und Pecorino Romano. Cremig ohne Sahne – nur durch die Emulsion von Ei und Pastawasser.",
+      "type": "original",
+      "user_id": 1,
+      "origin_country": "Italien",
+      "origin_region": "Latium (Rom)",
+      "prep_time": 10,
+      "cook_time": 20,
+      "servings": 4,
+      "difficulty": "medium",
+      "image_url": null
+    },
+    "ingredients": [
+      { "name": "Spaghetti", "amount": 400, "unit": "g", "position": 1 },
+      { "name": "Guanciale", "amount": 200, "unit": "g", "position": 2 },
+      { "name": "Eigelb", "amount": 6, "unit": "Stück", "position": 3 },
+      { "name": "Ei (ganz)", "amount": 1, "unit": "Stück", "position": 4 },
+      { "name": "Pecorino Romano", "amount": 100, "unit": "g", "position": 5 },
+      { "name": "Schwarzer Pfeffer (frisch gemahlen)", "amount": 2, "unit": "TL", "position": 6 },
+      { "name": "Salz (für Pastawasser)", "amount": 30, "unit": "g", "position": 7 }
+    ],
+    "steps": [
+      { "step_number": 1, "instruction": "Einen großen Topf mit 4 Litern Wasser aufsetzen und großzügig salzen (ca. 30g Salz). Das Wasser sollte wie Meerwasser schmecken." },
+      { "step_number": 2, "instruction": "Guanciale in ca. 1cm dicke Streifen oder Würfel schneiden. Die Schwarte kann dranbleiben – sie wird knusprig." },
+      { "step_number": 3, "instruction": "Pecorino Romano fein reiben und in einer großen Schüssel mit den Eigelben und dem ganzen Ei verquirlen. Großzügig schwarzen Pfeffer hinzufügen." },
+      { "step_number": 4, "instruction": "Guanciale in einer kalten Pfanne bei mittlerer Hitze langsam auslassen, bis das Fett ausgetreten und das Fleisch goldbraun und knusprig ist (8-10 Minuten). Nicht zu heiß braten." },
+      { "step_number": 5, "instruction": "Spaghetti im kochenden Salzwasser nach Packungsanweisung al dente kochen. 2 Minuten vor Ende der Garzeit eine Tasse Pastawasser (ca. 200ml) abschöpfen." },
+      { "step_number": 6, "instruction": "Pfanne mit Guanciale vom Herd nehmen. Die Pasta mit einer Zange direkt aus dem Wasser in die Pfanne geben. Etwas Pastawasser hinzufügen." },
+      { "step_number": 7, "instruction": "Die Ei-Käse-Mischung zur Pasta geben und SOFORT kräftig schwenken. Die Pfanne darf nicht mehr auf der heißen Herdplatte stehen – die Restwärme reicht. Bei zu viel Hitze stockt das Ei." },
+      { "step_number": 8, "instruction": "Bei Bedarf löffelweise Pastawasser hinzufügen und weiterschwenken, bis eine cremige, seidige Sauce entsteht, die die Pasta umhüllt." },
+      { "step_number": 9, "instruction": "Sofort servieren. Mit extra Pecorino und frisch gemahlenem schwarzen Pfeffer garnieren." }
+    ]
+  },
+  {
+    "recipe": {
+      "title": "Tonkotsu Ramen",
+      "description": "Japanische Ramen mit reichhaltiger, milchig-weißer Schweinebrühe aus lang gekochten Knochen. Gekrönt mit Chashu-Schweinebauch, Ajitama-Ei und Frühlingszwiebeln.",
+      "type": "original",
+      "user_id": 1,
+      "origin_country": "Japan",
+      "origin_region": "Fukuoka (Kyushu)",
+      "prep_time": 60,
+      "cook_time": 720,
+      "servings": 4,
+      "difficulty": "hard",
+      "image_url": null
+    },
+    "ingredients": [
+      { "name": "Schweineknochen (Röhrenknochen)", "amount": 2, "unit": "kg", "position": 1 },
+      { "name": "Schweinefüße", "amount": 500, "unit": "g", "position": 2 },
+      { "name": "Schweinebauch (für Chashu)", "amount": 500, "unit": "g", "position": 3 },
+      { "name": "Frische Ramen-Nudeln", "amount": 400, "unit": "g", "position": 4 },
+      { "name": "Eier (für Ajitama)", "amount": 4, "unit": "Stück", "position": 5 },
+      { "name": "Sojasauce", "amount": 200, "unit": "ml", "position": 6 },
+      { "name": "Mirin", "amount": 100, "unit": "ml", "position": 7 },
+      { "name": "Sake", "amount": 100, "unit": "ml", "position": 8 },
+      { "name": "Knoblauch", "amount": 1, "unit": "Knolle", "position": 9 },
+      { "name": "Ingwer", "amount": 50, "unit": "g", "position": 10 },
+      { "name": "Frühlingszwiebeln", "amount": 4, "unit": "Stangen", "position": 11 },
+      { "name": "Nori-Blätter", "amount": 4, "unit": "Stück", "position": 12 },
+      { "name": "Sesamöl", "amount": 2, "unit": "EL", "position": 13 },
+      { "name": "Salz", "amount": 1, "unit": "EL", "position": 14 }
+    ],
+    "steps": [
+      { "step_number": 1, "instruction": "Schweineknochen und -füße in kaltem Wasser 2-3 Stunden einweichen, dabei das Wasser mehrmals wechseln, um Blut und Unreinheiten zu entfernen." },
+      { "step_number": 2, "instruction": "Knochen in einen großen Topf geben, mit kaltem Wasser bedecken und zum Kochen bringen. 10 Minuten kochen, dann abgießen und die Knochen unter fließendem Wasser gründlich abspülen." },
+      { "step_number": 3, "instruction": "Gesäuberte Knochen zurück in den Topf geben und mit 5 Litern frischem Wasser bedecken. Halbierte Knoblauchknolle und grob geschnittenen Ingwer hinzufügen." },
+      { "step_number": 4, "instruction": "Bei hoher Hitze zum Kochen bringen, dann auf mittlere Hitze reduzieren. Die Brühe muss konstant stark köcheln (nicht nur simmern) – das emulgiert das Fett und macht sie milchig-weiß. 10-12 Stunden kochen." },
+      { "step_number": 5, "instruction": "Für das Chashu: Schweinebauch mit Küchengarn zu einer festen Rolle binden. In einer Pfanne von allen Seiten scharf anbraten." },
+      { "step_number": 6, "instruction": "Sojasauce, Mirin, Sake und 200ml Wasser in einem Topf erhitzen. Schweinebauch hinzufügen und bei niedriger Hitze 2-3 Stunden schmoren, bis er butterzart ist. In der Flüssigkeit abkühlen lassen." },
+      { "step_number": 7, "instruction": "Für Ajitama: Eier 6,5 Minuten kochen (wachsweiches Eigelb). Sofort in Eiswasser abschrecken, schälen und in der Chashu-Marinade mindestens 4 Stunden (besser über Nacht) einlegen." },
+      { "step_number": 8, "instruction": "Fertige Brühe durch ein feines Sieb passieren. Mit Salz abschmecken. Die Brühe sollte reichhaltig, cremig und milchig-weiß sein." },
+      { "step_number": 9, "instruction": "Zum Servieren: Pro Schüssel 2 EL Tare (Würzsauce aus Sojasauce) in die Schüssel geben. 400ml heiße Brühe darübergießen." },
+      { "step_number": 10, "instruction": "Ramen-Nudeln nach Packungsanweisung kochen (meist 60-90 Sekunden), gut abtropfen lassen und in die Brühe geben." },
+      { "step_number": 11, "instruction": "Mit geschnittenem Chashu (3-4 Scheiben), halbiertem Ajitama-Ei, Frühlingszwiebelringen, einem Nori-Blatt und einem Tropfen Sesamöl garnieren. Sofort servieren." }
+    ]
+  },
+  {
+    "recipe": {
+      "title": "Tacos al Pastor",
+      "description": "Mexikanische Straßentacos mit mariniertem Schweinefleisch nach Schäfer-Art. Inspiriert von libanesischen Einwanderern – eine Fusion aus Shawarma und mexikanischer Küche.",
+      "type": "original",
+      "user_id": 1,
+      "origin_country": "Mexiko",
+      "origin_region": "Mexiko-Stadt",
+      "prep_time": 30,
+      "cook_time": 120,
+      "servings": 6,
+      "difficulty": "medium",
+      "image_url": null
+    },
+    "ingredients": [
+      { "name": "Schweinenacken", "amount": 1, "unit": "kg", "position": 1 },
+      { "name": "Ananas", "amount": 1, "unit": "Stück", "position": 2 },
+      { "name": "Getrocknete Guajillo-Chilis", "amount": 4, "unit": "Stück", "position": 3 },
+      { "name": "Getrocknete Ancho-Chilis", "amount": 2, "unit": "Stück", "position": 4 },
+      { "name": "Achiote-Paste", "amount": 50, "unit": "g", "position": 5 },
+      { "name": "Weißer Essig", "amount": 60, "unit": "ml", "position": 6 },
+      { "name": "Orangensaft (frisch gepresst)", "amount": 120, "unit": "ml", "position": 7 },
+      { "name": "Knoblauch", "amount": 4, "unit": "Zehen", "position": 8 },
+      { "name": "Kreuzkümmel (gemahlen)", "amount": 1, "unit": "TL", "position": 9 },
+      { "name": "Oregano (mexikanisch, getrocknet)", "amount": 1, "unit": "TL", "position": 10 },
+      { "name": "Schwarzer Pfeffer", "amount": 0.5, "unit": "TL", "position": 11 },
+      { "name": "Salz", "amount": 1, "unit": "EL", "position": 12 },
+      { "name": "Maistortillas (klein, 10cm)", "amount": 18, "unit": "Stück", "position": 13 },
+      { "name": "Weiße Zwiebel", "amount": 1, "unit": "Stück", "position": 14 },
+      { "name": "Frischer Koriander", "amount": 1, "unit": "Bund", "position": 15 },
+      { "name": "Limetten", "amount": 3, "unit": "Stück", "position": 16 },
+      { "name": "Salsa Verde", "amount": 200, "unit": "ml", "position": 17 }
+    ],
+    "steps": [
+      { "step_number": 1, "instruction": "Getrocknete Chilis entstielen und entkernen. In einer trockenen Pfanne bei mittlerer Hitze 1-2 Minuten rösten, bis sie duften. Mit heißem Wasser bedecken und 20 Minuten einweichen." },
+      { "step_number": 2, "instruction": "Eingeweichte Chilis mit Achiote-Paste, Essig, Orangensaft, Knoblauch, Kreuzkümmel, Oregano, Pfeffer und Salz im Mixer zu einer glatten Marinade pürieren." },
+      { "step_number": 3, "instruction": "Schweinenacken in dünne Scheiben schneiden (ca. 5mm). In einer großen Schüssel mit der Marinade vermengen und mindestens 4 Stunden, besser über Nacht, im Kühlschrank marinieren." },
+      { "step_number": 4, "instruction": "Ananas schälen und in dünne Scheiben schneiden. Einige Scheiben für die Garnitur aufbewahren, den Rest in kleine Würfel schneiden." },
+      { "step_number": 5, "instruction": "Eine gusseiserne Pfanne oder Plancha auf hohe Hitze bringen. Marinierte Fleischscheiben portionsweise scharf anbraten, bis sie karamellisierte Ränder haben (3-4 Minuten pro Seite)." },
+      { "step_number": 6, "instruction": "Ananas-Scheiben ebenfalls kurz anbraten, bis sie leichte Grillmarkierungen haben. Das gebratene Fleisch in kleine Stücke schneiden oder hacken." },
+      { "step_number": 7, "instruction": "Tortillas in einer trockenen Pfanne oder direkt über der Gasflamme kurz erwärmen, bis sie weich und leicht gebräunt sind." },
+      { "step_number": 8, "instruction": "Zwiebel fein würfeln und Koriander grob hacken. Limetten in Spalten schneiden." },
+      { "step_number": 9, "instruction": "Tacos zusammenbauen: Jeweils 2 Tortillas übereinanderlegen, mit Fleisch belegen, Ananaswürfel, Zwiebeln und Koriander darauf verteilen. Mit Limettensaft beträufeln und Salsa Verde dazu reichen." }
+    ]
+  }
+]

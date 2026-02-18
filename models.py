@@ -79,6 +79,8 @@ class Recipe(db.Model):
             "cook_time": self.cook_time,
             "servings": self.servings,
             "difficulty": self.difficulty,
+            "ingredients": [ing.to_dict() for ing in self.ingredients],
+            "steps": [stp.to_dict() for stp in self.steps],
             "favorite_count": self.favorite_count,
             "is_draft": self.is_draft,
             "created_at": self.created_at,

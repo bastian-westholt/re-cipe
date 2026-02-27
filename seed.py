@@ -3,12 +3,12 @@ from app import app
 from models import db, User, Recipe, Ingredient, Step, Favorite, RelatedRecipe
 
 with app.app_context():
+    db.session.query(Favorite).delete()
+    db.session.query(RelatedRecipe).delete()
     db.session.query(Step).delete()
     db.session.query(Ingredient).delete()
     db.session.query(Recipe).delete()
     db.session.query(User).delete()
-    db.session.query(Favorite).delete()
-    db.session.query(RelatedRecipe).delete()
 
     master_user = User(
         username="admin",
@@ -24,6 +24,7 @@ with app.app_context():
         seed_data = json.load(file_obj)
 
     for data in seed_data:
+        data['recipe']['user_id'] = master_user.id
         recipe = Recipe(**data['recipe'])
         db.session.add(recipe)
         db.session.flush()

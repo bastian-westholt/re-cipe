@@ -21,15 +21,27 @@ class DataManager:
 
         return recipes
 
+    def get_ings_and_stps_for_recipe(self, recipe):
+
+        recipe.ingredients = db.session.execute(
+            select(Ingredient).where(Ingredient.recipe_id == recipe.id).order_by(Ingredient.position)
+        ).scalars().all()
+
+        recipe.steps = db.session.execute(
+            select(Step).where(Step.recipe_id == recipe.id).order_by(Step.step_number)
+        ).scalars().all()
+
+        return recipe
+
     def get_recipe_by_id(self, recipe_id):
 
-        recipe_by_id_query = (
-            select(Recipe)
-            .where(recipe_id == Recipe.id)
-        )
+        recipe = db.session.execute(
+            select(Recipe).where(Recipe.id == recipe_id)
+        ).scalar()
 
-        list_of_recipe_by_id = db.session.execute(recipe_by_id_query).scalar()
-        return list_of_recipe_by_id
+        recipe = self.get_ings_and_stps_for_recipe(recipe)
+
+        return recipe
 
     def get_multiple_recipes_by_id(self, recipe_ids):
 
@@ -38,21 +50,19 @@ class DataManager:
         ).scalars().all()
 
         for recipe in recipes:
-            recipe.ingredients = db.session.execute(
-                select(Ingredient).where(Ingredient.recipe_id == recipe.id).order_by(Ingredient.position)
-            ).scalars().all()
-
-            recipe.steps = db.session.execute(
-                select(Step).where(Step.recipe_id == recipe.id).order_by(Step.step_number)
-            ).scalars().all()
+            self.get_ings_and_stps_for_recipe(recipe)
 
         return recipes
+
+    def get_master_user(self):
+        return db.session.execute(select(User).where(User.role == "admin")).scalar()
 
     def save_fusion(self, obj):
         ingredients = obj.pop("ingredients")
         steps = obj.pop("steps")
+        master_user = self.get_master_user()
 
-        fusion = Recipe(**obj, type="fusion", user_id=1)
+        fusion = Recipe(**obj, type="fusion", user_id=master_user.id)
         db.session.add(fusion)
         db.session.flush()
 
@@ -67,4 +77,4 @@ class DataManager:
             db.session.flush()
 
         db.session.commit()
-        return obj
+        return self.get_ings_and_stps_for_recipe(fusion)

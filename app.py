@@ -1,12 +1,13 @@
 import os
 from flask import Flask, render_template, redirect, request, url_for, jsonify
-
+from flask_cors import CORS
 import ai_service
 from models import db
 from data_manager import DataManager
 from dotenv import load_dotenv
 
 app = Flask(__name__)
+CORS(app)
 
 load_dotenv()
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
@@ -44,7 +45,7 @@ def create_fusion():
     if not fusionObj:
         return jsonify({"error": "Fusion nicht gefunden"}), 404
     fusion = data_manager.save_fusion(fusionObj)
-    return fusion
+    return jsonify(fusion.to_dict())
 
 if __name__ == '__main__':
     # with app.app_context():

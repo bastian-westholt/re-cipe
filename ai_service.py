@@ -1,7 +1,42 @@
 from pydantic import BaseModel
+import requests
 from openai import OpenAI
 from dotenv import load_dotenv
+import urllib.parse
+from storage_service import upload_image_to_cloud
 import os
+
+SYSTEM_PROMPT = """
+Du bist ein mit einem Michelinstern ausgezeichneter Spitzenkoch und Rezeptentwickler.
+
+Gib ausschließlich valides JSON aus, ohne zusätzlichen Text und ohne Markdown.
+
+Das JSON MUSS exakt diesem Schema entsprechen (keine Extra-Felder):
+{
+  "title": string,
+  "description": string,
+  "prep_time": int,
+  "cook_time": int,
+  "servings": int,
+  "difficulty": "easy" | "medium" | "hard",
+  "ingredients": [
+    {"name": string, "amount": float, "unit": string, "position": int}
+  ],
+  "steps": [
+    {"step_number": int, "instruction": string}
+  ]
+}
+
+Regeln:
+- Integriere aus JEDEM Ursprungsrezept mindestens 1 klar erkennbares Element (Zutat/Technik/Aromatik/Textur).
+- Mengen: amount muss eine Zahl sein (z. B. 0.5, 2, 12.0). Keine Brüche als Text.
+- Für „nach Geschmack” setze amount=0 und unit=”n. G.”.
+- Zeiten in Minuten als ganze Zahl.
+- title: maximal 80 Zeichen, kein langer Untertitel, nur der Rezeptname.
+- Sprache: Deutsch.
+"""
+
+OLD_SYSTEM_PROMPT = '''"Du bist ein Spitzenkoch ausgezeichnet mit einem Michelinstern und viel Raffinesse. Du erhältst 2-5 traditionelle Rezepte als Inspiration. Erstelle daraus EIN neues, kreatives Fusion-Rezept, das einige Elemente aus allen gegebenen Rezepten kombiniert und neukomponiert oder sogar leicht abgewandelt um den bestmöglichen Geschmack zu ermöglichen. Das Ergebnis muss realistisch kochbar sein, des weiteren muss das Rezept kohärent sein. Es gibt nur die Schwierigkeitsgrade ('hard', 'medium', 'easy'). Antworte auf Deutsch."'''
 
 load_dotenv()
 GPT_KEY = os.getenv('GPT_API_KEY')
@@ -46,13 +81,35 @@ def build_prompt(originals):
 
     return recipe_texts
 
+def generate_image(title, description):
+    image_prompt = f'{title}, {description}: Create food photography of given recipe, professional lighting, top-down view'
+    encoded_prompt = urllib.parse.quote(image_prompt)
+
+    response = requests.get(
+        f'https://gen.pollinations.ai/image/{encoded_prompt}',
+        params={
+            "model": "imagen-4",
+            "width": "1024",
+            "height": "1024",
+            "enhance": "true"
+        },
+        headers={
+            "Authorization": f"Bearer {os.getenv('POLLINATIONS_API_KEY')}"
+        }
+    )
+
+    print(response.status_code)
+    print(response.content[:200])
+
+    return response.content
+
 def generate_fusion(originals):
     original_str = "\n\n".join(build_prompt(originals))
 
     response = client.responses.parse(
-        model="gpt-4o-2024-08-06",
+        model="gpt-5-nano-2025-08-07",
         input=[
-            {"role": "system", "content": "Du bist ein kreativer Fusion-Koch. Du erhältst 2-5 traditionelle Rezepte als Inspiration. Erstelle daraus EIN neues, kreatives Fusion-Rezept, das Elemente aus allen gegebenen Rezepten kombiniert. Das Ergebnis muss realistisch kochbar sein. Antworte auf Deutsch."},
+            {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": original_str}
         ],
         text_format=FusionRecipe,
@@ -60,5 +117,7 @@ def generate_fusion(originals):
 
     data = response.output_parsed
     obj = data.model_dump()
+    image = generate_image(obj["title"], obj["description"])
+    obj["image_url"] = upload_image_to_cloud(image)
 
     return obj

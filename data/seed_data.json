@@ -122,5 +122,293 @@
       { "step_number": 8, "instruction": "Zwiebel fein würfeln und Koriander grob hacken. Limetten in Spalten schneiden." },
       { "step_number": 9, "instruction": "Tacos zusammenbauen: Jeweils 2 Tortillas übereinanderlegen, mit Fleisch belegen, Ananaswürfel, Zwiebeln und Koriander darauf verteilen. Mit Limettensaft beträufeln und Salsa Verde dazu reichen." }
     ]
+  },
+  {
+    "recipe": {
+      "title": "Pad Thai",
+      "description": "Thailands berühmtestes Nudelgericht – gebratene Reisnudeln mit Tamarinde, Fischsauce, Ei und Erdnüssen. Ein perfektes Gleichgewicht aus süß, sauer, salzig und umami.",
+      "type": "original",
+      "user_id": 1,
+      "origin_country": "Thailand",
+      "origin_region": "Bangkok (Zentralthailand)",
+      "prep_time": 20,
+      "cook_time": 10,
+      "servings": 2,
+      "difficulty": "medium",
+      "image_url": null
+    },
+    "ingredients": [
+      { "name": "Reisnudeln (flach, 3-5mm breit)", "amount": 200, "unit": "g", "position": 1 },
+      { "name": "Garnelen (geschält)", "amount": 150, "unit": "g", "position": 2 },
+      { "name": "Fester Tofu", "amount": 100, "unit": "g", "position": 3 },
+      { "name": "Eier", "amount": 2, "unit": "Stück", "position": 4 },
+      { "name": "Tamarindenpaste", "amount": 3, "unit": "EL", "position": 5 },
+      { "name": "Fischsauce", "amount": 2, "unit": "EL", "position": 6 },
+      { "name": "Palmzucker (oder brauner Zucker)", "amount": 2, "unit": "EL", "position": 7 },
+      { "name": "Knoblauch", "amount": 3, "unit": "Zehen", "position": 8 },
+      { "name": "Schalotte", "amount": 1, "unit": "Stück", "position": 9 },
+      { "name": "Sojasprossen", "amount": 100, "unit": "g", "position": 10 },
+      { "name": "Schnittknoblauch (chinesisch)", "amount": 30, "unit": "g", "position": 11 },
+      { "name": "Geröstete Erdnüsse (gehackt)", "amount": 3, "unit": "EL", "position": 12 },
+      { "name": "Chiliflocken", "amount": 1, "unit": "TL", "position": 13 },
+      { "name": "Limette", "amount": 1, "unit": "Stück", "position": 14 },
+      { "name": "Pflanzenöl", "amount": 3, "unit": "EL", "position": 15 }
+    ],
+    "steps": [
+      { "step_number": 1, "instruction": "Reisnudeln in lauwarmem Wasser 20-30 Minuten einweichen, bis sie biegsam aber noch fest sind. Nicht in heißem Wasser einweichen – sie werden sonst matschig. Gut abtropfen lassen." },
+      { "step_number": 2, "instruction": "Pad-Thai-Sauce anrühren: Tamarindenpaste, Fischsauce und Palmzucker verrühren, bis sich der Zucker aufgelöst hat." },
+      { "step_number": 3, "instruction": "Tofu in kleine Würfel schneiden und in einer heißen Pfanne oder einem Wok mit 1 EL Öl knusprig braten. Herausnehmen und beiseite stellen." },
+      { "step_number": 4, "instruction": "Wok auf höchster Stufe erhitzen. 2 EL Öl hinzufügen. Knoblauch und Schalotte kurz anbraten (30 Sekunden), dann die Garnelen hinzufügen und von beiden Seiten 1 Minute braten." },
+      { "step_number": 5, "instruction": "Garnelen zur Seite schieben. Eier aufschlagen, in den Wok geben und leicht stocken lassen, dann grob verrühren." },
+      { "step_number": 6, "instruction": "Eingeweichte Nudeln in den Wok geben. Die Pad-Thai-Sauce darübergießen und alles mit zwei Spateln oder Essstäbchen kräftig durchschwenken, bis die Nudeln die Sauce gleichmäßig aufgenommen haben." },
+      { "step_number": 7, "instruction": "Tofu, die Hälfte der Sojasprossen und den Schnittknoblauch unterheben. Noch 1 Minute bei hoher Hitze braten." },
+      { "step_number": 8, "instruction": "Auf Tellern anrichten. Mit gehackten Erdnüssen, restlichen Sojasprossen, Chiliflocken und Limettenspalten servieren." }
+    ]
+  },
+  {
+    "recipe": {
+      "title": "Boeuf Bourguignon",
+      "description": "Klassischer französischer Rinderschmortopf aus dem Burgund. Zartes Rindfleisch, stundenlang in Rotwein geschmort mit Pilzen, Perlzwiebeln und Speck – rustikale Haute Cuisine.",
+      "type": "original",
+      "user_id": 1,
+      "origin_country": "Frankreich",
+      "origin_region": "Burgund",
+      "prep_time": 30,
+      "cook_time": 180,
+      "servings": 6,
+      "difficulty": "medium",
+      "image_url": null
+    },
+    "ingredients": [
+      { "name": "Rinderschulter (in 4cm Würfeln)", "amount": 1.5, "unit": "kg", "position": 1 },
+      { "name": "Rotwein (Burgunder oder Pinot Noir)", "amount": 750, "unit": "ml", "position": 2 },
+      { "name": "Durchwachsener Speck", "amount": 200, "unit": "g", "position": 3 },
+      { "name": "Champignons", "amount": 300, "unit": "g", "position": 4 },
+      { "name": "Perlzwiebeln", "amount": 200, "unit": "g", "position": 5 },
+      { "name": "Karotten", "amount": 3, "unit": "Stück", "position": 6 },
+      { "name": "Zwiebel", "amount": 1, "unit": "Stück", "position": 7 },
+      { "name": "Knoblauch", "amount": 3, "unit": "Zehen", "position": 8 },
+      { "name": "Tomatenmark", "amount": 2, "unit": "EL", "position": 9 },
+      { "name": "Rinderbrühe", "amount": 250, "unit": "ml", "position": 10 },
+      { "name": "Mehl", "amount": 2, "unit": "EL", "position": 11 },
+      { "name": "Bouquet garni (Thymian, Lorbeer, Petersilie)", "amount": 1, "unit": "Bund", "position": 12 },
+      { "name": "Butter", "amount": 40, "unit": "g", "position": 13 },
+      { "name": "Olivenöl", "amount": 2, "unit": "EL", "position": 14 },
+      { "name": "Salz und Pfeffer", "amount": 1, "unit": "Prise", "position": 15 }
+    ],
+    "steps": [
+      { "step_number": 1, "instruction": "Rindfleisch trocken tupfen und großzügig mit Salz und Pfeffer würzen. In einer großen Kasserolle oder einem Bräter in Olivenöl portionsweise scharf anbraten, bis alle Seiten dunkelbraun sind. Herausnehmen und beiseite stellen." },
+      { "step_number": 2, "instruction": "Speck in Stifte schneiden und im selben Topf knusprig auslassen. Herausnehmen. Zwiebel und Karotten grob würfeln und im Bratfett 5 Minuten anschwitzen." },
+      { "step_number": 3, "instruction": "Knoblauch und Tomatenmark hinzufügen, 1 Minute mitrösten. Mehl darüberstäuben und 1 Minute rühren." },
+      { "step_number": 4, "instruction": "Mit dem gesamten Rotwein ablöschen und den Bratensatz vom Boden lösen. Rinderbrühe hinzugießen. Fleisch und Speck zurück in den Topf geben. Bouquet garni hinzufügen." },
+      { "step_number": 5, "instruction": "Zum Kochen bringen, dann den Deckel auflegen und im vorgeheizten Backofen bei 160°C 2,5 bis 3 Stunden schmoren, bis das Fleisch butterzart ist." },
+      { "step_number": 6, "instruction": "In der Zwischenzeit: Champignons vierteln und in Butter bei hoher Hitze goldbraun braten. Perlzwiebeln in Butter glasig dünsten." },
+      { "step_number": 7, "instruction": "30 Minuten vor Ende der Garzeit Champignons und Perlzwiebeln zum Schmortopf geben." },
+      { "step_number": 8, "instruction": "Bouquet garni entfernen. Sauce bei Bedarf auf dem Herd einreduzieren, bis sie sämig ist. Mit Salz und Pfeffer abschmecken. Mit frischer Petersilie bestreut und Kartoffelpüree oder Baguette servieren." }
+    ]
+  },
+  {
+    "recipe": {
+      "title": "Bibimbap",
+      "description": "Koreanisches Reisgericht mit bunt angerichtetem Gemüse, mariniertem Rindfleisch, Spiegelei und feuriger Gochujang-Paste. Wird vor dem Essen kräftig durchgemischt.",
+      "type": "original",
+      "user_id": 1,
+      "origin_country": "Südkorea",
+      "origin_region": "Jeonju (Jeolla-Provinz)",
+      "prep_time": 40,
+      "cook_time": 20,
+      "servings": 4,
+      "difficulty": "medium",
+      "image_url": null
+    },
+    "ingredients": [
+      { "name": "Reis (Kurzkorn)", "amount": 400, "unit": "g", "position": 1 },
+      { "name": "Rindfleisch (Hüfte, dünn geschnitten)", "amount": 200, "unit": "g", "position": 2 },
+      { "name": "Spinat", "amount": 200, "unit": "g", "position": 3 },
+      { "name": "Karotte", "amount": 1, "unit": "Stück", "position": 4 },
+      { "name": "Zucchini", "amount": 1, "unit": "Stück", "position": 5 },
+      { "name": "Sojasprossen", "amount": 150, "unit": "g", "position": 6 },
+      { "name": "Shiitake-Pilze", "amount": 100, "unit": "g", "position": 7 },
+      { "name": "Eier", "amount": 4, "unit": "Stück", "position": 8 },
+      { "name": "Gochujang (koreanische Chilipaste)", "amount": 4, "unit": "EL", "position": 9 },
+      { "name": "Sojasauce", "amount": 3, "unit": "EL", "position": 10 },
+      { "name": "Sesamöl", "amount": 3, "unit": "EL", "position": 11 },
+      { "name": "Knoblauch (fein gehackt)", "amount": 2, "unit": "Zehen", "position": 12 },
+      { "name": "Sesam (geröstet)", "amount": 2, "unit": "EL", "position": 13 },
+      { "name": "Zucker", "amount": 1, "unit": "TL", "position": 14 },
+      { "name": "Pflanzenöl", "amount": 2, "unit": "EL", "position": 15 }
+    ],
+    "steps": [
+      { "step_number": 1, "instruction": "Reis waschen bis das Wasser klar ist und nach Packungsanweisung kochen. Warm halten." },
+      { "step_number": 2, "instruction": "Rindfleisch marinieren: Mit 1 EL Sojasauce, 1 EL Sesamöl, 1 Zehe Knoblauch und Zucker vermengen. 15 Minuten ziehen lassen." },
+      { "step_number": 3, "instruction": "Jedes Gemüse einzeln zubereiten (Namul): Spinat kurz blanchieren, ausdrücken und mit Sesamöl und einer Prise Salz würzen." },
+      { "step_number": 4, "instruction": "Karotte in feine Stifte schneiden und in etwas Öl 2 Minuten anbraten. Leicht salzen. Zucchini ebenso in Halbmonde schneiden und separat braten." },
+      { "step_number": 5, "instruction": "Sojasprossen 2 Minuten in kochendem Wasser blanchieren, abtropfen und mit Sesamöl und Salz würzen. Shiitake-Pilze in Scheiben schneiden und anbraten." },
+      { "step_number": 6, "instruction": "Mariniertes Rindfleisch in einer heißen Pfanne bei starker Hitze 2-3 Minuten scharf anbraten." },
+      { "step_number": 7, "instruction": "In jeder Schüssel eine Portion Reis als Basis geben. Die verschiedenen Gemüse und das Fleisch fächerförmig und farblich getrennt auf dem Reis anrichten." },
+      { "step_number": 8, "instruction": "In einer Pfanne mit etwas Öl pro Person ein Spiegelei braten (Eigelb muss noch flüssig sein). Auf das Bibimbap setzen." },
+      { "step_number": 9, "instruction": "Mit Gochujang, geröstetem Sesam und einem Schuss Sesamöl servieren. Vor dem Essen alles kräftig durchmischen." }
+    ]
+  },
+  {
+    "recipe": {
+      "title": "Moussaka",
+      "description": "Griechischer Auflauf mit Schichten aus gebratener Aubergine, gewürztem Lammhackfleisch und cremiger Béchamelsauce. Ein Sonntagsessen, das in jeder griechischen Familie Tradition hat.",
+      "type": "original",
+      "user_id": 1,
+      "origin_country": "Griechenland",
+      "origin_region": "Athen (Gesamtgriechisch)",
+      "prep_time": 45,
+      "cook_time": 60,
+      "servings": 6,
+      "difficulty": "medium",
+      "image_url": null
+    },
+    "ingredients": [
+      { "name": "Auberginen", "amount": 3, "unit": "Stück", "position": 1 },
+      { "name": "Lammhackfleisch", "amount": 500, "unit": "g", "position": 2 },
+      { "name": "Zwiebeln", "amount": 2, "unit": "Stück", "position": 3 },
+      { "name": "Knoblauch", "amount": 3, "unit": "Zehen", "position": 4 },
+      { "name": "Stückige Tomaten (Dose)", "amount": 400, "unit": "g", "position": 5 },
+      { "name": "Tomatenmark", "amount": 2, "unit": "EL", "position": 6 },
+      { "name": "Rotwein (trocken)", "amount": 100, "unit": "ml", "position": 7 },
+      { "name": "Zimt (gemahlen)", "amount": 0.5, "unit": "TL", "position": 8 },
+      { "name": "Oregano (getrocknet)", "amount": 1, "unit": "TL", "position": 9 },
+      { "name": "Butter", "amount": 60, "unit": "g", "position": 10 },
+      { "name": "Mehl", "amount": 60, "unit": "g", "position": 11 },
+      { "name": "Milch", "amount": 600, "unit": "ml", "position": 12 },
+      { "name": "Eigelb", "amount": 2, "unit": "Stück", "position": 13 },
+      { "name": "Muskatnuss", "amount": 1, "unit": "Prise", "position": 14 },
+      { "name": "Olivenöl", "amount": 80, "unit": "ml", "position": 15 },
+      { "name": "Salz und Pfeffer", "amount": 1, "unit": "Prise", "position": 16 }
+    ],
+    "steps": [
+      { "step_number": 1, "instruction": "Auberginen in ca. 1cm dicke Scheiben schneiden, salzen und 30 Minuten stehen lassen. Die austretende Flüssigkeit mit Küchenpapier abtupfen – das entfernt Bitterstoffe." },
+      { "step_number": 2, "instruction": "Auberginenscheiben beidseitig in Olivenöl bei mittlerer Hitze goldbraun braten. Auf Küchenpapier abtropfen lassen." },
+      { "step_number": 3, "instruction": "Für die Fleischsauce: Zwiebeln fein würfeln und in Olivenöl glasig dünsten. Knoblauch und Lammhack hinzufügen, krümelig anbraten." },
+      { "step_number": 4, "instruction": "Tomatenmark kurz mitrösten, mit Rotwein ablöschen. Stückige Tomaten, Zimt und Oregano hinzufügen. Bei niedriger Hitze 20 Minuten einkochen lassen, bis die Sauce dickflüssig ist. Mit Salz und Pfeffer würzen." },
+      { "step_number": 5, "instruction": "Für die Béchamelsauce: Butter in einem Topf schmelzen, Mehl einrühren und 2 Minuten anschwitzen (Roux). Milch nach und nach unter ständigem Rühren hinzufügen." },
+      { "step_number": 6, "instruction": "Béchamel 5 Minuten köcheln lassen, bis sie dickflüssig ist. Vom Herd nehmen, Eigelbe und Muskatnuss einrühren. Mit Salz und Pfeffer abschmecken." },
+      { "step_number": 7, "instruction": "Auflaufform einfetten. Schichten: Hälfte der Auberginen → gesamte Fleischsauce → restliche Auberginen → Béchamelsauce gleichmäßig darübergießen." },
+      { "step_number": 8, "instruction": "Im vorgeheizten Backofen bei 180°C ca. 45 Minuten backen, bis die Oberfläche goldbraun ist. 15 Minuten ruhen lassen vor dem Anschneiden – so hält die Moussaka ihre Form." }
+    ]
+  },
+  {
+    "recipe": {
+      "title": "Butter Chicken",
+      "description": "Nordindisches Curry mit zarten Hähnchenstücken in einer samtigen Tomaten-Butter-Sauce. Ursprünglich in den 1950ern im Moti Mahal Restaurant in Delhi erfunden – mild, aromatisch und reichhaltig.",
+      "type": "original",
+      "user_id": 1,
+      "origin_country": "Indien",
+      "origin_region": "Delhi (Nordindien)",
+      "prep_time": 30,
+      "cook_time": 40,
+      "servings": 4,
+      "difficulty": "easy",
+      "image_url": null
+    },
+    "ingredients": [
+      { "name": "Hähnchenschenkel (entbeint)", "amount": 800, "unit": "g", "position": 1 },
+      { "name": "Joghurt (Natur)", "amount": 150, "unit": "g", "position": 2 },
+      { "name": "Stückige Tomaten (Dose)", "amount": 400, "unit": "g", "position": 3 },
+      { "name": "Cashewnüsse (ungesalzen)", "amount": 50, "unit": "g", "position": 4 },
+      { "name": "Butter", "amount": 60, "unit": "g", "position": 5 },
+      { "name": "Sahne", "amount": 100, "unit": "ml", "position": 6 },
+      { "name": "Zwiebel", "amount": 1, "unit": "Stück", "position": 7 },
+      { "name": "Knoblauch", "amount": 4, "unit": "Zehen", "position": 8 },
+      { "name": "Ingwer (frisch gerieben)", "amount": 1, "unit": "EL", "position": 9 },
+      { "name": "Garam Masala", "amount": 2, "unit": "TL", "position": 10 },
+      { "name": "Kurkuma", "amount": 1, "unit": "TL", "position": 11 },
+      { "name": "Kreuzkümmel (gemahlen)", "amount": 1, "unit": "TL", "position": 12 },
+      { "name": "Chilipulver (Kashmiri)", "amount": 1, "unit": "TL", "position": 13 },
+      { "name": "Zucker", "amount": 1, "unit": "TL", "position": 14 },
+      { "name": "Salz", "amount": 1, "unit": "TL", "position": 15 }
+    ],
+    "steps": [
+      { "step_number": 1, "instruction": "Hähnchen in mundgerechte Stücke schneiden. Mit Joghurt, 1 TL Garam Masala, Kurkuma und einer Prise Salz marinieren. Mindestens 1 Stunde im Kühlschrank ziehen lassen." },
+      { "step_number": 2, "instruction": "Marinierte Hähnchenstücke in einer heißen Pfanne oder unter dem Backofengrill bei hoher Hitze anbraten, bis sie leicht verkohlt sind. Beiseite stellen." },
+      { "step_number": 3, "instruction": "Butter in einem großen Topf schmelzen. Zwiebel fein gewürfelt, Knoblauch und Ingwer darin 5 Minuten anschwitzen, bis die Zwiebeln weich sind." },
+      { "step_number": 4, "instruction": "Kreuzkümmel und Chilipulver hinzufügen, 1 Minute mitrösten, bis es duftet. Stückige Tomaten und Cashewnüsse hinzufügen. 15 Minuten köcheln lassen." },
+      { "step_number": 5, "instruction": "Die Tomatenmischung mit einem Stabmixer oder im Standmixer zu einer glatten Sauce pürieren. Durch ein Sieb streichen für eine extra samtige Konsistenz." },
+      { "step_number": 6, "instruction": "Sauce zurück in den Topf geben. Sahne, Zucker und restliches Garam Masala einrühren. Die angebratenen Hähnchenstücke hinzufügen." },
+      { "step_number": 7, "instruction": "Bei niedriger Hitze 15 Minuten köcheln lassen, bis das Hähnchen durchgegart und die Sauce sämig eingedickt ist. Mit Salz abschmecken." },
+      { "step_number": 8, "instruction": "Mit einem Klecks Butter und frischem Koriander garniert servieren. Dazu passt Basmati-Reis oder Naan-Brot." }
+    ]
+  },
+  {
+    "recipe": {
+      "title": "Ceviche Clásico",
+      "description": "Peruanisches Nationalgericht aus frischem rohem Fisch, der in Limettensaft mariniert wird. Die Säure 'gart' den Fisch. Serviert mit Süßkartoffel und geröstetem Mais – frisch, leicht und voller Geschmack.",
+      "type": "original",
+      "user_id": 1,
+      "origin_country": "Peru",
+      "origin_region": "Lima (Küstenregion)",
+      "prep_time": 25,
+      "cook_time": 0,
+      "servings": 4,
+      "difficulty": "easy",
+      "image_url": null
+    },
+    "ingredients": [
+      { "name": "Frisches Seebrassfilet (oder Wolfsbarsch)", "amount": 500, "unit": "g", "position": 1 },
+      { "name": "Limetten (frisch gepresst)", "amount": 10, "unit": "Stück", "position": 2 },
+      { "name": "Rote Zwiebel", "amount": 1, "unit": "Stück", "position": 3 },
+      { "name": "Ají Amarillo (peruanische Chilipaste)", "amount": 1, "unit": "EL", "position": 4 },
+      { "name": "Frischer Koriander", "amount": 1, "unit": "Bund", "position": 5 },
+      { "name": "Knoblauch", "amount": 1, "unit": "Zehe", "position": 6 },
+      { "name": "Ingwer (frisch gerieben)", "amount": 1, "unit": "TL", "position": 7 },
+      { "name": "Sellerie", "amount": 1, "unit": "Stange", "position": 8 },
+      { "name": "Süßkartoffel", "amount": 1, "unit": "Stück", "position": 9 },
+      { "name": "Mais (gerösteter, Cancha)", "amount": 100, "unit": "g", "position": 10 },
+      { "name": "Eiswürfel", "amount": 3, "unit": "Stück", "position": 11 },
+      { "name": "Salz", "amount": 1, "unit": "TL", "position": 12 }
+    ],
+    "steps": [
+      { "step_number": 1, "instruction": "Süßkartoffel mit Schale in Salzwasser 20-25 Minuten kochen, bis sie weich ist. Abkühlen lassen, schälen und in dicke Scheiben schneiden." },
+      { "step_number": 2, "instruction": "Fischfilet in ca. 2cm große Würfel schneiden. Der Fisch muss absolut frisch sein (Sashimi-Qualität). In eine Glasschüssel geben und leicht salzen." },
+      { "step_number": 3, "instruction": "Rote Zwiebel in dünne Halbringe schneiden. In eiskaltem Wasser 5 Minuten einlegen (nimmt die Schärfe), dann abtropfen lassen." },
+      { "step_number": 4, "instruction": "Leche de Tigre (Tigermilch) zubereiten: Limettensaft, Knoblauch, Ingwer, Ají Amarillo, etwas Sellerie und Korianderstängel mit 3 Eiswürfeln im Mixer kurz pürieren. Durch ein Sieb passieren." },
+      { "step_number": 5, "instruction": "Die Leche de Tigre über den Fisch gießen. Vorsichtig vermengen und nur 2-3 Minuten ziehen lassen – nicht länger, sonst wird der Fisch zu fest." },
+      { "step_number": 6, "instruction": "Zwiebelringe und gehackten Koriander unterheben. Sofort auf Tellern anrichten mit Süßkartoffelscheiben und geröstetem Mais als Beilage." }
+    ]
+  },
+  {
+    "recipe": {
+      "title": "Shakshuka",
+      "description": "Nordafrikanisch-israelisches Pfannengericht mit Eiern, die direkt in einer würzigen Tomaten-Paprika-Sauce pochiert werden. Einfach, herzhaft und perfekt zum Frühstück oder Abendessen mit frischem Brot.",
+      "type": "original",
+      "user_id": 1,
+      "origin_country": "Israel",
+      "origin_region": "Tel Aviv (Ursprung: Tunesien/Nordafrika)",
+      "prep_time": 10,
+      "cook_time": 25,
+      "servings": 4,
+      "difficulty": "easy",
+      "image_url": null
+    },
+    "ingredients": [
+      { "name": "Eier", "amount": 6, "unit": "Stück", "position": 1 },
+      { "name": "Stückige Tomaten (Dose)", "amount": 800, "unit": "g", "position": 2 },
+      { "name": "Rote Paprika", "amount": 2, "unit": "Stück", "position": 3 },
+      { "name": "Zwiebel", "amount": 1, "unit": "Stück", "position": 4 },
+      { "name": "Knoblauch", "amount": 4, "unit": "Zehen", "position": 5 },
+      { "name": "Kreuzkümmel (gemahlen)", "amount": 2, "unit": "TL", "position": 6 },
+      { "name": "Paprikapulver (süß)", "amount": 1, "unit": "TL", "position": 7 },
+      { "name": "Cayennepfeffer", "amount": 0.5, "unit": "TL", "position": 8 },
+      { "name": "Zucker", "amount": 1, "unit": "TL", "position": 9 },
+      { "name": "Frische Petersilie", "amount": 1, "unit": "Bund", "position": 10 },
+      { "name": "Feta (zerbröckelt)", "amount": 80, "unit": "g", "position": 11 },
+      { "name": "Olivenöl", "amount": 3, "unit": "EL", "position": 12 },
+      { "name": "Salz und Pfeffer", "amount": 1, "unit": "Prise", "position": 13 }
+    ],
+    "steps": [
+      { "step_number": 1, "instruction": "Paprika entkernen und in kleine Würfel schneiden. Zwiebel und Knoblauch fein hacken." },
+      { "step_number": 2, "instruction": "Olivenöl in einer großen Pfanne (mit Deckel) bei mittlerer Hitze erhitzen. Zwiebel und Paprika 8 Minuten anbraten, bis sie weich sind." },
+      { "step_number": 3, "instruction": "Knoblauch, Kreuzkümmel, Paprikapulver und Cayennepfeffer hinzufügen. 1 Minute unter Rühren rösten, bis die Gewürze duften." },
+      { "step_number": 4, "instruction": "Stückige Tomaten und Zucker hinzufügen. Aufkochen, dann auf mittlere Hitze reduzieren und 10 Minuten einkochen lassen, bis die Sauce leicht eingedickt ist. Mit Salz und Pfeffer abschmecken." },
+      { "step_number": 5, "instruction": "Mit einem Löffel 6 Mulden in die Sauce drücken. In jede Mulde vorsichtig ein Ei aufschlagen. Feta zwischen den Eiern verteilen." },
+      { "step_number": 6, "instruction": "Deckel auflegen und bei niedriger bis mittlerer Hitze 6-8 Minuten garen, bis das Eiweiß gestockt, das Eigelb aber noch weich ist." },
+      { "step_number": 7, "instruction": "Mit gehackter Petersilie bestreuen und direkt aus der Pfanne mit warmem Brot servieren." }
+    ]
   }
 ]

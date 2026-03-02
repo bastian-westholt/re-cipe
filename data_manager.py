@@ -1,5 +1,5 @@
 from sqlalchemy import select
-
+import logging
 import ai_service
 from models import db, User, Recipe, Ingredient, Step
 
@@ -79,4 +79,5 @@ class DataManager:
             db.session.flush()
 
         db.session.commit()
+        logging.info(f"Fusion gespeichert: {fusion.id}")
         return self.get_ings_and_stps_for_recipe(fusion)

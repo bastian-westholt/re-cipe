@@ -1,4 +1,5 @@
 import os
+import logging
 from flask import Flask, render_template, redirect, request, url_for, jsonify
 from flask_cors import CORS
 import ai_service
@@ -8,6 +9,11 @@ from dotenv import load_dotenv
 
 app = Flask(__name__)
 CORS(app)
+
+logging.basicConfig(
+      level=logging.DEBUG,
+      format='%(asctime)s - %(levelname)s - %(message)s'
+  )
 
 load_dotenv()
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')

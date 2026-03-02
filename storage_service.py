@@ -12,5 +12,7 @@ cloudinary.config(
 
 # Upload an image
 def upload_image_to_cloud(image):
+    if not image:
+        return None
     upload_result = cloudinary.uploader.upload(image)
     return upload_result["secure_url"]

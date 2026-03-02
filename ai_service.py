@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 import urllib.parse
 from storage_service import upload_image_to_cloud
 import os
+import logging
 
 SYSTEM_PROMPT = """
 Du bist ein mit einem Michelinstern ausgezeichneter Spitzenkoch und Rezeptentwickler.
@@ -82,51 +83,68 @@ def build_prompt(originals):
     return recipe_texts
 
 def generate_embedding(query):
-    response = client.embeddings.create(
-        model="text-embedding-3-small",
-        input=f"{query}"
-    )
-    embedding = response.data[0].embedding
+    try:
+        response = client.embeddings.create(
+            model="text-embedding-3-small",
+            input=f"{query}"
+        )
+        embedding = response.data[0].embedding
+        if not embedding:
+            return None
 
-    return embedding
+        return embedding
+    except Exception as e:
+        logging.error(f'Embedding Error: {e}')
+        return None
 
 def generate_image(title, description):
-    image_prompt = f'{title}, {description}: Create food photography of given recipe, professional lighting, top-down view'
-    encoded_prompt = urllib.parse.quote(image_prompt)
+    try:
+        image_prompt = f'{title}, {description}: Create food photography of given recipe, professional lighting, top-down view'
+        encoded_prompt = urllib.parse.quote(image_prompt)
 
-    response = requests.get(
-        f'https://gen.pollinations.ai/image/{encoded_prompt}',
-        params={
-            "model": "imagen-4",
-            "width": "1024",
-            "height": "1024",
-            "enhance": "true"
-        },
-        headers={
-            "Authorization": f"Bearer {os.getenv('POLLINATIONS_API_KEY')}"
-        }
-    )
+        response = requests.get(
+            f'https://gen.pollinations.ai/image/{encoded_prompt}',
+            params={
+                "model": "imagen-4",
+                "width": "1024",
+                "height": "1024",
+                "enhance": "true"
+            },
+            headers={
+                "Authorization": f"Bearer {os.getenv('POLLINATIONS_API_KEY')}"
+            },
+            timeout=(5, 30)
+        )
 
-    print(response.status_code)
-    print(response.content[:200])
-
-    return response.content
+        if response.status_code != 200:
+            logging.warning(f"Pollinations Fehler: {response.status_code}")
+            return None
+        return response.content
+    except requests.exceptions.Timeout:
+        return None
 
 def generate_fusion(originals):
-    original_str = "\n\n".join(build_prompt(originals))
+    try:
+        original_str = "\n\n".join(build_prompt(originals))
 
-    response = client.responses.parse(
-        model="gpt-5.2-2025-12-11",
-        input=[
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": original_str}
-        ],
-        text_format=FusionRecipe,
-    )
+        response = client.responses.parse(
+            model="gpt-5.2-2025-12-11",
+            input=[
+                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "user", "content": original_str}
+            ],
+            text_format=FusionRecipe,
+        )
 
-    data = response.output_parsed
-    obj = data.model_dump()
-    image = generate_image(obj["title"], obj["description"])
-    obj["image_url"] = upload_image_to_cloud(image)
+        data = response.output_parsed
+        if not data:
+            return None
+        obj = data.model_dump()
+        image = generate_image(obj["title"], obj["description"])
+        obj["image_url"] = upload_image_to_cloud(image) if image else None
 
-    return obj
+        return obj
+    except Exception as e:
+        logging.error(f"GPT Fehler: {e}")
+        return None
+

@@ -11,7 +11,7 @@
       "cook_time": 20,
       "servings": 4,
       "difficulty": "medium",
-      "image_url": null
+      "image_url": "https://res.cloudinary.com/djze6baxs/image/upload/v1772203087/Klassische-Carbonara-3_wjy3d8.webp"
     },
     "ingredients": [
       { "name": "Spaghetti", "amount": 400, "unit": "g", "position": 1 },
@@ -46,7 +46,7 @@
       "cook_time": 720,
       "servings": 4,
       "difficulty": "hard",
-      "image_url": null
+      "image_url": "https://res.cloudinary.com/djze6baxs/image/upload/v1772203039/20250721213527-Ramen-rezept-tonkotsu-miso-chashu2-1_avtn46.webp"
     },
     "ingredients": [
       { "name": "Schweineknochen (Röhrenknochen)", "amount": 2, "unit": "kg", "position": 1 },
@@ -90,7 +90,7 @@
       "cook_time": 120,
       "servings": 6,
       "difficulty": "medium",
-      "image_url": null
+      "image_url": "https://res.cloudinary.com/djze6baxs/image/upload/v1772202962/3nilbs9ilh0q-34qfudra6f86-tacos-al-pastor-titelbild_ayfodn.avif"
     },
     "ingredients": [
       { "name": "Schweinenacken", "amount": 1, "unit": "kg", "position": 1 },
@@ -135,7 +135,7 @@
       "cook_time": 10,
       "servings": 2,
       "difficulty": "medium",
-      "image_url": null
+      "image_url": "https://res.cloudinary.com/djze6baxs/image/upload/v1772202926/f441d7ec-c038-4de3-aad7-853e19c1c7eb_lsuvfq.webp"
     },
     "ingredients": [
       { "name": "Reisnudeln (flach, 3-5mm breit)", "amount": 200, "unit": "g", "position": 1 },
@@ -177,7 +177,7 @@
       "cook_time": 180,
       "servings": 6,
       "difficulty": "medium",
-      "image_url": null
+      "image_url": "https://res.cloudinary.com/djze6baxs/image/upload/v1772202883/rez-edeka-boeuf-bourguignon-rezept-a-d-1-1_x6d712.webp"
     },
     "ingredients": [
       { "name": "Rinderschulter (in 4cm Würfeln)", "amount": 1.5, "unit": "kg", "position": 1 },
@@ -219,7 +219,7 @@
       "cook_time": 20,
       "servings": 4,
       "difficulty": "medium",
-      "image_url": null
+      "image_url": "https://res.cloudinary.com/djze6baxs/image/upload/v1772202846/14_korean-bbq_istock-1487535489_un8olb.jpg"
     },
     "ingredients": [
       { "name": "Reis (Kurzkorn)", "amount": 400, "unit": "g", "position": 1 },
@@ -262,7 +262,7 @@
       "cook_time": 60,
       "servings": 6,
       "difficulty": "medium",
-      "image_url": null
+      "image_url": "https://res.cloudinary.com/djze6baxs/image/upload/v1772202339/eggplant-parmesan-recipe-also-aubergine-parmigiana_f0ygmo.webp"
     },
     "ingredients": [
       { "name": "Auberginen", "amount": 3, "unit": "Stück", "position": 1 },
@@ -305,7 +305,7 @@
       "cook_time": 40,
       "servings": 4,
       "difficulty": "easy",
-      "image_url": null
+      "image_url": "https://res.cloudinary.com/djze6baxs/image/upload/v1772202788/butter-chicken_xol3we.jpg"
     },
     "ingredients": [
       { "name": "Hähnchenschenkel (entbeint)", "amount": 800, "unit": "g", "position": 1 },
@@ -347,7 +347,7 @@
       "cook_time": 0,
       "servings": 4,
       "difficulty": "easy",
-      "image_url": null
+      "image_url": "https://res.cloudinary.com/djze6baxs/image/upload/v1772202647/clasico-web_nbor7w.png"
     },
     "ingredients": [
       { "name": "Frisches Seebrassfilet (oder Wolfsbarsch)", "amount": 500, "unit": "g", "position": 1 },
@@ -384,7 +384,7 @@
       "cook_time": 25,
       "servings": 4,
       "difficulty": "easy",
-      "image_url": null
+      "image_url": "https://res.cloudinary.com/djze6baxs/image/upload/v1772202702/Shakshuka-Rezept-1_kmeobo.jpg"
     },
     "ingredients": [
       { "name": "Eier", "amount": 6, "unit": "Stück", "position": 1 },

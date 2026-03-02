@@ -32,7 +32,7 @@ Regeln:
 - Mengen: amount muss eine Zahl sein (z. B. 0.5, 2, 12.0). Keine Brüche als Text.
 - Für „nach Geschmack” setze amount=0 und unit=”n. G.”.
 - Zeiten in Minuten als ganze Zahl.
-- title: maximal 80 Zeichen, kein langer Untertitel, nur der Rezeptname.
+- title: maximal 80 Zeichen, kein Untertitel oder Subtitel, nur der Rezeptname.
 - Sprache: Deutsch.
 """
 
@@ -81,6 +81,15 @@ def build_prompt(originals):
 
     return recipe_texts
 
+def generate_embedding(query):
+    response = client.embeddings.create(
+        model="text-embedding-3-small",
+        input=f"{query}"
+    )
+    embedding = response.data[0].embedding
+
+    return embedding
+
 def generate_image(title, description):
     image_prompt = f'{title}, {description}: Create food photography of given recipe, professional lighting, top-down view'
     encoded_prompt = urllib.parse.quote(image_prompt)
@@ -107,7 +116,7 @@ def generate_fusion(originals):
     original_str = "\n\n".join(build_prompt(originals))
 
     response = client.responses.parse(
-        model="gpt-5-nano-2025-08-07",
+        model="gpt-5.2-2025-12-11",
         input=[
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": original_str}

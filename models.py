@@ -1,4 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
+from pgvector.sqlalchemy import Vector
 
 db = SQLAlchemy()
 
@@ -45,7 +46,8 @@ class Recipe(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=True)
     title = db.Column(db.String(100), nullable=False)
     description = db.Column(db.Text, nullable=False)
-    image_url = db.Column(db.String(255), nullable=True)
+    embedding = db.Column(Vector(1536), nullable=True)
+    image_url = db.Column(db.Text, nullable=True)
     origin_country = db.Column(db.String(100), nullable=True)
     origin_region = db.Column(db.String(100), nullable=True)
     creator_note = db.Column(db.Text, nullable=True)
@@ -79,14 +81,13 @@ class Recipe(db.Model):
             "cook_time": self.cook_time,
             "servings": self.servings,
             "difficulty": self.difficulty,
-            "ingredients": [ing.to_dict() for ing in self.ingredients],
-            "steps": [stp.to_dict() for stp in self.steps],
+            "ingredients": [ing.to_dict() for ing in self.ingredients] if hasattr(self, 'ingredients') else [],
+            "steps": [stp.to_dict() for stp in self.steps] if hasattr(self, 'steps') else [],
             "favorite_count": self.favorite_count,
             "is_draft": self.is_draft,
             "created_at": self.created_at,
             "updated_at": self.updated_at
         }
-
 
 class RelatedRecipe(db.Model):
 

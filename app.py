@@ -24,8 +24,14 @@ def hello_world():  # put application's code here
 
 @app.route('/recipes')
 def list_all_recipes():
-    recipes = data_manager.get_all_recipes()
-    return jsonify([recipe.to_dict() for recipe in recipes])
+    query = request.args.get('q')
+    page = request.args.get('page', 0, type=int)
+    if query:
+        recipes = data_manager.get_recipes_by_query(query, page)
+        return jsonify([recipe.to_dict() for recipe in recipes])
+    else:
+        recipes = data_manager.get_all_recipes()
+        return jsonify([recipe.to_dict() for recipe in recipes])
 
 @app.route('/recipes/<int:recipe_id>')
 def get_recipe_by_id(recipe_id):

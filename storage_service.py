@@ -1,5 +1,4 @@
 import os
-
 import cloudinary
 import cloudinary.uploader
 

@@ -1,4 +1,6 @@
 from sqlalchemy import select
+
+import ai_service
 from models import db, User, Recipe, Ingredient, Step
 
 
@@ -9,15 +11,6 @@ class DataManager:
         recipes = db.session.execute(
             select(Recipe).order_by(Recipe.title)
         ).scalars().all()
-
-        for recipe in recipes:
-            recipe.ingredients = db.session.execute(
-                select(Ingredient).where(Ingredient.recipe_id == recipe.id).order_by(Ingredient.position)
-            ).scalars().all()
-
-            recipe.steps = db.session.execute(
-                select(Step).where(Step.recipe_id == recipe.id).order_by(Step.step_number)
-            ).scalars().all()
 
         return recipes
 
@@ -32,6 +25,14 @@ class DataManager:
         ).scalars().all()
 
         return recipe
+
+    def get_recipes_by_query(self, query, page):
+        query_embedding = ai_service.generate_embedding(query)
+        recipes = db.session.execute(
+            select(Recipe).order_by(Recipe.embedding.cosine_distance(query_embedding)).limit(10).offset(page * 10)
+        ).scalars().all()
+        return recipes
+
 
     def get_recipe_by_id(self, recipe_id):
 
@@ -60,6 +61,7 @@ class DataManager:
     def save_fusion(self, obj):
         ingredients = obj.pop("ingredients")
         steps = obj.pop("steps")
+        obj['embedding'] = ai_service.generate_embedding(f'{obj["title"]}, {obj["description"]}')
         master_user = self.get_master_user()
 
         fusion = Recipe(**obj, type="fusion", user_id=master_user.id)

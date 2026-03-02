@@ -1,6 +1,7 @@
 import json
 from app import app
 from models import db, User, Recipe, Ingredient, Step, Favorite, RelatedRecipe
+import ai_service
 
 with app.app_context():
     db.session.query(Favorite).delete()
@@ -25,6 +26,7 @@ with app.app_context():
 
     for data in seed_data:
         data['recipe']['user_id'] = master_user.id
+        data['recipe']['embedding'] = ai_service.generate_embedding(f"{data['recipe']['title']}, {data['recipe']['description']}")
         recipe = Recipe(**data['recipe'])
         db.session.add(recipe)
         db.session.flush()

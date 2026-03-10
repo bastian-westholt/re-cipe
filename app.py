@@ -1,8 +1,6 @@
 import os
 import logging
 import json
-from pyexpat.errors import messages
-
 from flask import Flask, render_template, redirect, request, url_for, jsonify
 from flask_cors import CORS
 import ai_service
@@ -80,8 +78,8 @@ def create_fusion():
 
 @app.route('/recipes/fusion/save', methods=['POST'])
 def save_fusion():
-    response = request.get_json()
-    fusion = data_manager.save_fusion(response)
+    data = request.get_json()
+    fusion = data_manager.save_fusion(data)
     return jsonify(fusion.to_dict())
 
 if __name__ == '__main__':

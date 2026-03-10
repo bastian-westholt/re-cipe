@@ -2,7 +2,7 @@ from sqlalchemy import select
 import logging
 import ai_service
 import storage_service
-from models import db, User, Recipe, Ingredient, Step
+from models import db, User, Recipe, Ingredient, Step, RelatedRecipe
 
 
 class DataManager:
@@ -62,6 +62,7 @@ class DataManager:
     def save_fusion(self, obj):
         ingredients = obj.pop("ingredients")
         steps = obj.pop("steps")
+        recipe_ids = obj.pop("recipe_ids")
         if "image_url" not in obj:
             image = ai_service.generate_image(obj["title"], obj["description"])
             obj["image_url"] = storage_service.upload_image_to_cloud(image) if image else None
@@ -81,6 +82,10 @@ class DataManager:
             step = Step(**stp, recipe_id=fusion.id)
             db.session.add(step)
             db.session.flush()
+
+        for position, original_id in enumerate(recipe_ids, start=1):
+            related = RelatedRecipe(fusion_id=fusion.id, original_id=original_id, position=position)
+            db.session.add(related)
 
         db.session.commit()
         logging.info(f"Fusion gespeichert: {fusion.id}")

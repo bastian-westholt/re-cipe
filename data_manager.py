@@ -1,6 +1,7 @@
 from sqlalchemy import select
 import logging
 import ai_service
+import storage_service
 from models import db, User, Recipe, Ingredient, Step
 
 
@@ -61,6 +62,9 @@ class DataManager:
     def save_fusion(self, obj):
         ingredients = obj.pop("ingredients")
         steps = obj.pop("steps")
+        if "image_url" not in obj:
+            image = ai_service.generate_image(obj["title"], obj["description"])
+            obj["image_url"] = storage_service.upload_image_to_cloud(image) if image else None
         obj['embedding'] = ai_service.generate_embedding(f'{obj["title"]}, {obj["description"]}')
         master_user = self.get_master_user()
 

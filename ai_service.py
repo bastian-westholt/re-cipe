@@ -35,6 +35,43 @@ Regeln:
 - Zeiten in Minuten als ganze Zahl.
 - title: maximal 80 Zeichen, kein Untertitel oder Subtitel, nur der Rezeptname.
 - Sprache: Deutsch.
+- description: maximal 200 Zeichen, orientiere dich an der Kürze der Originalrezept-Beschreibungen.
+"""
+
+FEEDBACK_PROMPT = """
+Du bist ein mit einem Michelinstern ausgezeichneter Spitzenkoch und Rezeptentwickler.
+
+Du hast bereits ein Fusion-Rezept erstellt das in der Konversationshistorie zu finden ist.
+Überarbeite es gezielt basierend auf dem Feedback des Users - behalte was gut ist und passe nur
+an was kritisiert wurde.
+
+Gib ausschließlich valides JSON aus, ohne zusätzlichen Text und ohne Markdown.
+
+Das JSON MUSS exakt diesem Schema entsprechen (keine Extra-Felder):
+{
+"title": string,
+"description": string,
+"prep_time": int,
+"cook_time": int,
+"servings": int,
+"difficulty": "easy" | "medium" | "hard",
+"ingredients": [
+  {"name": string, "amount": float, "unit": string, "position": int}
+],
+"steps": [
+  {"step_number": int, "instruction": string}
+]
+}
+
+Regeln:
+- Integriere aus JEDEM Ursprungsrezept mindestens 1 klar erkennbares Element
+(Zutat/Technik/Aromatik/Textur).
+- Mengen: amount muss eine Zahl sein (z. B. 0.5, 2, 12.0). Keine Brüche als Text.
+- Für „nach Geschmack" setze amount=0 und unit="n. G.".
+- Zeiten in Minuten als ganze Zahl.
+- title: maximal 80 Zeichen, kein Untertitel oder Subtitel, nur der Rezeptname.
+- Sprache: Deutsch.
+- description: maximal 200 Zeichen, orientiere dich an der Kürze der Originalrezept-Beschreibungen.
 """
 
 OLD_SYSTEM_PROMPT = '''"Du bist ein Spitzenkoch ausgezeichnet mit einem Michelinstern und viel Raffinesse. Du erhältst 2-5 traditionelle Rezepte als Inspiration. Erstelle daraus EIN neues, kreatives Fusion-Rezept, das einige Elemente aus allen gegebenen Rezepten kombiniert und neukomponiert oder sogar leicht abgewandelt um den bestmöglichen Geschmack zu ermöglichen. Das Ergebnis muss realistisch kochbar sein, des weiteren muss das Rezept kohärent sein. Es gibt nur die Schwierigkeitsgrade ('hard', 'medium', 'easy'). Antworte auf Deutsch."'''
@@ -105,7 +142,7 @@ def generate_image(title, description):
         response = requests.get(
             f'https://gen.pollinations.ai/image/{encoded_prompt}',
             params={
-                "model": "imagen-4",
+                "model": "gptimage",
                 "width": "1024",
                 "height": "1024",
                 "enhance": "true"
@@ -113,7 +150,7 @@ def generate_image(title, description):
             headers={
                 "Authorization": f"Bearer {os.getenv('POLLINATIONS_API_KEY')}"
             },
-            timeout=(5, 30)
+            timeout=(5, 60)
         )
 
         if response.status_code != 200:
@@ -123,15 +160,16 @@ def generate_image(title, description):
     except requests.exceptions.Timeout:
         return None
 
-def generate_fusion(originals):
+def generate_fusion(recipes, messages):
     try:
-        original_str = "\n\n".join(build_prompt(originals))
+        recipes_str = "\n\n".join(build_prompt(recipes))
 
         response = client.responses.parse(
             model="gpt-5.2-2025-12-11",
             input=[
-                {"role": "system", "content": SYSTEM_PROMPT},
-                {"role": "user", "content": original_str}
+                {"role": "system", "content": SYSTEM_PROMPT if not messages else FEEDBACK_PROMPT},
+                {"role": "user", "content": recipes_str},
+                *messages
             ],
             text_format=FusionRecipe,
         )
@@ -140,8 +178,6 @@ def generate_fusion(originals):
         if not data:
             return None
         obj = data.model_dump()
-        image = generate_image(obj["title"], obj["description"])
-        obj["image_url"] = upload_image_to_cloud(image) if image else None
 
         return obj
     except Exception as e:

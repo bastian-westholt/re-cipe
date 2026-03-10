@@ -8,4 +8,5 @@ _alt
 __pycache__/
 .venv/
 
-frontend
+frontend_proto
+tests

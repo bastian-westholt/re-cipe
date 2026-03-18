@@ -10,7 +10,7 @@ from data_manager import DataManager
 from dotenv import load_dotenv
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins='*')
 
 logging.basicConfig(
       level=logging.DEBUG,
@@ -71,7 +71,7 @@ def create_fusion():
         return jsonify({"error": "Fusion nicht gefunden"}), 404
 
     if not messages:
-        image = ai_service.generate_image(fusionObj["title"], fusionObj["description"])
+        image = ai_service.generate_image(fusionObj["title_en"], fusionObj["description_en"])
         fusionObj["image_url"] = storage_service.upload_image_to_cloud(image) if image else None
 
     return jsonify(fusionObj)

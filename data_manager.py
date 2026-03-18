@@ -10,7 +10,7 @@ class DataManager:
     def get_all_recipes(self):
 
         recipes = db.session.execute(
-            select(Recipe).order_by(Recipe.title)
+            select(Recipe).order_by(Recipe.title_en)
         ).scalars().all()
 
         return recipes
@@ -64,9 +64,9 @@ class DataManager:
         steps = obj.pop("steps")
         recipe_ids = obj.pop("recipe_ids")
         if "image_url" not in obj:
-            image = ai_service.generate_image(obj["title"], obj["description"])
+            image = ai_service.generate_image(obj["title_en"], obj["description_en"])
             obj["image_url"] = storage_service.upload_image_to_cloud(image) if image else None
-        obj['embedding'] = ai_service.generate_embedding(f'{obj["title"]}, {obj["description"]}')
+        obj['embedding'] = ai_service.generate_embedding(f'{obj["title_en"]}, {obj["description_en"]}')
         master_user = self.get_master_user()
 
         fusion = Recipe(**obj, type="fusion", user_id=master_user.id)

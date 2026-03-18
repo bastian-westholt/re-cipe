@@ -26,7 +26,7 @@ with app.app_context():
 
     for data in seed_data:
         data['recipe']['user_id'] = master_user.id
-        data['recipe']['embedding'] = ai_service.generate_embedding(f"{data['recipe']['title']}, {data['recipe']['description']}")
+        data['recipe']['embedding'] = ai_service.generate_embedding(f"{data['recipe']['title_en']}, {data['recipe']['description_en']}")
         recipe = Recipe(**data['recipe'])
         db.session.add(recipe)
         db.session.flush()

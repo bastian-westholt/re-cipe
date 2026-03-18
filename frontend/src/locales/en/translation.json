@@ -1,0 +1,19 @@
+{
+  "typeToggle": {
+    "original": "ORIGINAL",
+    "fusion": "FUSION"
+  },
+
+    "feedPage": {
+    "allFusions": "All fusions"
+  },
+
+  "recipeDetailPage": {
+    "ingredients": "INGREDIENTS",
+    "steps": "STEPS",
+    "step": "STEP",
+    "portions": "PORTIONS",
+    "min": "min",
+    "alt": "A delicious meal"
+  }
+}

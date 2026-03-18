@@ -16,4 +16,16 @@
   body {
     @apply font-sans;
   }
+
+  .scrollbar-hide {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  h1 {
+    @apply text-2xl font-medium
+  }
 }

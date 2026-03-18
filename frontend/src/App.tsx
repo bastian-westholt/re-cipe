@@ -1,14 +1,19 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import FeedPage from './pages/FeedPage'
+import Layout from './components/Layout'
+import RecipeDetailPage from "./pages/RecipeDetailPage"
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-      <h1 className="text-primary">Hallo</h1>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Layout />}>
+          <Route index element={<FeedPage />} />
+          <Route path='/recipes/:id' element={<RecipeDetailPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   )
 }
 

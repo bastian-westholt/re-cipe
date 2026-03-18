@@ -1,0 +1,19 @@
+{
+  "typeToggle": {
+    "original": "ORIGINAL",
+    "fusion": "FUSION"
+  },
+
+  "feedPage": {
+    "allFusions": "Alle Fusionen"
+  },
+
+  "recipeDetailPage": {
+    "ingredients": "ZUTATEN",
+    "steps": "SCHRITTE",
+    "step": "SCHRITT",
+    "portions": "PORTIONEN",
+    "min": "min",
+    "alt": "Ein köstliches Mahl"
+  }
+}

@@ -44,12 +44,16 @@ class Recipe(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     type = db.Column(db.String(10), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=True)
-    title = db.Column(db.String(100), nullable=False)
-    description = db.Column(db.Text, nullable=False)
+    title_de = db.Column(db.String(100), nullable=False)
+    title_en = db.Column(db.String(100), nullable=False)
+    description_de = db.Column(db.Text, nullable=False)
+    description_en = db.Column(db.Text, nullable=False)
     embedding = db.Column(Vector(1536), nullable=True)
     image_url = db.Column(db.Text, nullable=True)
-    origin_country = db.Column(db.String(100), nullable=True)
-    origin_region = db.Column(db.String(100), nullable=True)
+    origin_country_de = db.Column(db.String(100), nullable=True)
+    origin_country_en = db.Column(db.String(100), nullable=True)
+    origin_region_de = db.Column(db.String(100), nullable=True)
+    origin_region_en = db.Column(db.String(100), nullable=True)
     creator_note = db.Column(db.Text, nullable=True)
     prep_time = db.Column(db.Integer, nullable=False)
     cook_time = db.Column(db.Integer, nullable=False)
@@ -61,21 +65,25 @@ class Recipe(db.Model):
     updated_at = db.Column(db.DateTime, onupdate=db.func.now(), nullable=True)
 
     def __repr__(self):
-        return f'Recipe(id: "{self.id}", title: "{self.title}")'
+        return f'Recipe(id: "{self.id}", title: "{self.title_en}")'
 
     def __str__(self):
-        return self.title
+        return self.title_en
 
     def to_dict(self):
         return {
             "id": self.id,
             "type": self.type,
             "user_id": self.user_id,
-            "title": self.title,
-            "description": self.description,
+            "title_de": self.title_de,
+            "title_en": self.title_en,
+            "description_de": self.description_de,
+            "description_en": self.description_en,
             "image_url": self.image_url,
-            "origin_country": self.origin_country,
-            "origin_region": self.origin_region,
+            "origin_country_de": self.origin_country_de,
+            "origin_country_en": self.origin_country_en,
+            "origin_region_de": self.origin_region_de,
+            "origin_region_en": self.origin_region_en,
             "creator_note": self.creator_note,
             "prep_time": self.prep_time,
             "cook_time": self.cook_time,
@@ -143,24 +151,28 @@ class Ingredient(db.Model):
     __tablename__ = 'ingredients'
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    name = db.Column(db.String(200), nullable=False)
+    name_de = db.Column(db.String(200), nullable=False)
+    name_en = db.Column(db.String(200), nullable=False)
     amount = db.Column(db.Float, nullable=True)
-    unit = db.Column(db.String(50), nullable=True)
+    unit_de = db.Column(db.String(50), nullable=True)
+    unit_en = db.Column(db.String(50), nullable=True)
     position = db.Column(db.Integer, nullable=False)
     recipe_id = db.Column(db.Integer, db.ForeignKey('recipes.id'), nullable=False)
 
     def __repr__(self):
-        return f'Ingredient(id: "{self.id}", name: "{self.name}")'
+        return f'Ingredient(id: "{self.id}", name: "{self.name_en}")'
 
     def __str__(self):
-        return self.name
+        return self.name_en
 
     def to_dict(self):
         return {
             "id": self.id,
-            "name": self.name,
+            "name_de": self.name_de,
+            "name_en": self.name_en,
             "amount": self.amount,
-            "unit": self.unit,
+            "unit_de": self.unit_de,
+            "unit_en": self.unit_en,
             "position": self.position,
             "recipe_id": self.recipe_id
         }
@@ -172,7 +184,8 @@ class Step(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     image_url = db.Column(db.String(255), nullable=True)
     step_number = db.Column(db.Integer, nullable=False)
-    instruction = db.Column(db.Text, nullable=False)
+    instruction_de = db.Column(db.Text, nullable=False)
+    instruction_en = db.Column(db.Text, nullable=False)
     recipe_id = db.Column(db.Integer, db.ForeignKey('recipes.id'), nullable=False)
 
     def __repr__(self):
@@ -186,7 +199,8 @@ class Step(db.Model):
             "id": self.id,
             "image_url": self.image_url,
             "step_number": self.step_number,
-            "instruction": self.instruction,
+            "instruction_de": self.instruction_de,
+            "instruction_en": self.instruction_en,
             "recipe_id": self.recipe_id
         }
 

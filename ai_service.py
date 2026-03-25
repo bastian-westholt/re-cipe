@@ -144,13 +144,14 @@ def generate_embedding(query):
 
 def generate_image(title, description):
     try:
-        image_prompt = f'{title}, {description}: Create food photography of given recipe, professional lighting, top-down view'
+        # image_prompt = f'{title}, {description}: Create food photography of given recipe, professional lighting, top-down view'
+        image_prompt = f'Neobrutalism illustration of {title}: {description}. Flat graphic style, bold black outlines, geometric shapes, editorial food illustration, poster art. Color palette: electric blue, lime green, hot pink, cream white, black. No text, no labels, no letters, no gradients, no photorealism, no shadows'
         encoded_prompt = urllib.parse.quote(image_prompt)
 
         response = requests.get(
             f'https://gen.pollinations.ai/image/{encoded_prompt}',
             params={
-                "model": "imagen-4",
+                "model": "flux-2-dev",
                 "width": "1024",
                 "height": "1024",
                 "enhance": "true"

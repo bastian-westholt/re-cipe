@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useSearchParams } from "react-router-dom"
 import { useRecipesStore } from "../store/recipesStore"
 import TypeToggle from "../components/feed/TypeToggle"
-import FilterButton from "../components/feed/FilterButton"
+import AvatarButton from "../components/feed/AvatarButton"
 import CuisineSection from "../components/feed/CuisineSection"
 import LangToggle from "../components/feed/LangToggle"
 
@@ -24,9 +24,9 @@ export default function FeedPage() {
         <>  
             <LangToggle />
             <TypeToggle activeType={type as 'original' | 'fusion'} />
-            <FilterButton />
+            <AvatarButton />
             <div className="flex flex-col gap-10 pt-20 pb-30 px-4">
-                <CuisineSection />
+                <CuisineSection type={type as 'original' | 'fusion'}/>
             </div>
         </>
     )

@@ -10,8 +10,8 @@ function App() {
       <Routes>
         <Route path='/' element={<Layout />}>
           <Route index element={<FeedPage />} />
-          <Route path='/recipes/:id' element={<RecipeDetailPage />} />
         </Route>
+        <Route path='/recipes/:id' element={<RecipeDetailPage />} />
       </Routes>
     </BrowserRouter>
   )

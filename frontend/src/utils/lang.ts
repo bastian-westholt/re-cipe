@@ -1,5 +1,5 @@
-import type { Recipe } from "../types/recipe";
+import type { Recipe, Ingredients, Step } from "../types/recipe";
 
-export function getLang(obj: Recipe, field: string, lang: string): string | number | null | undefined {
-    return obj[`${field}_${lang}` as keyof Recipe]
+export function getLang(obj: Recipe | Ingredients | Step, field: string, lang: string): string | number | null | undefined {
+    return (obj as Record<string, unknown>)[`${field}_${lang}`] as string | number | null | undefined
 }

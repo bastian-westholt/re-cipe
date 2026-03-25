@@ -5,8 +5,9 @@ export default function LangToggle() {
 
     const langToggleClass = clsx(
         "flex items-center justify-center",
-        "w-11 h-11 bg-surface rounded-2xl",
-        "fixed left-5 top-5 z-11"
+        "w-11 h-11 bg-color-2 border-2 border-border rounded-xl",
+        "neo-shadow-sm",
+        "fixed left-5 top-5 z-11 font-extralight"
     )
 
     const { i18n } = useTranslation()
@@ -22,7 +23,7 @@ export default function LangToggle() {
 
     return (
         <button className={langToggleClass} onClick={handleToggle}>
-            <h3 className="text-color-2">{currentLang === 'de' ? 'DE' : 'EN'}</h3>
+            <h3 className="text-color-1">{currentLang === 'de' ? 'DE' : 'EN'}</h3>
         </button>
     )
 }

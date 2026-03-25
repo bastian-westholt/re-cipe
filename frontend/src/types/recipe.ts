@@ -20,6 +20,8 @@ export interface Recipe {
     image_url: string | undefined
     origin_country: string | null
     origin_region: string | null
+    ingredients: Ingredients[]
+    steps: Step[]
     prep_time: number
     cook_time: number
     servings: number

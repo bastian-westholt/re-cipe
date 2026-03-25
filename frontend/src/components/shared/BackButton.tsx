@@ -8,8 +8,8 @@ export default function BackButton() {
 
     const backButtonClass = clsx(
         "flex items-center justify-center",
-        "w-11 h-11 bg-none",
-        "left-5 top-5 z-11"
+        "w-11 h-11 bg-color-2 border-2 border-border rounded-xl",
+        "neo-shadow-sm",
     )
 
     function handleClick() {
@@ -18,7 +18,7 @@ export default function BackButton() {
 
     return (
         <div className={backButtonClass} onClick={handleClick}>
-            <ArrowLeft02Icon color="#000000"/>
+            <ArrowLeft02Icon color="var(--color-color-1)"/>
         </div>
     )
 }

@@ -1,20 +1,44 @@
 @import
-  url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap');
+  url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Lexend:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #FF6B55;
-  --color-bg: #ffffff;
-  --color-surface: #E8E8E8;
-  --color-surface-2: #D9D9D9;
+  --color-primary: #0167FE;
+  --color-accent-1: #C7EF8E;
+  --color-accent-2: #FD72DB;
+  --color-bg: #FFFDF5;
+  --color-surface: #F4F4F4;
+  --color-surface-2: #E8E8E8;
   --color-color-1: #ffffff;
   --color-color-2: #000000;
+  --color-border: #0167FE;
+  --color-border-on-primary: #FD72DB;
+  --color-muted: #6B5B4E;
   --font-sans: "Lexend", sans-serif;
+  --font-display: "Bricolage Grotesque", sans-serif;
+}
+
+@layer utilities {
+  .neo-shadow-sm {
+    filter: drop-shadow(3px 3px 0px var(--color-border));
+  }
+  .neo-shadow {
+    filter: drop-shadow(4px 4px 0px var(--color-border));
+  }
+  .neo-shadow-box {
+    box-shadow: 4px 4px 0px 0px var(--color-border);
+  }
+  .neo-shadow-dark {
+    filter: drop-shadow(3px 3px 0px #FD72DB);
+  }
 }
 
 @layer base {
   body {
-    @apply font-sans;
+    @apply font-sans bg-bg;
+    background-image: radial-gradient(circle, #00000030 1px, transparent 1px);
+    background-size: 24px 24px;
+    background-attachment: fixed;
   }
 
   .scrollbar-hide {
@@ -26,6 +50,15 @@
   }
 
   h1 {
-    @apply text-2xl font-medium
+    @apply text-3xl font-bold;
+  }
+
+  .font-display {
+    font-weight: 800;
+    font-variation-settings: "opsz" 96;
+    display: inline-block;
+    max-width: calc(100% / 1.2);
+    transform: scaleX(1.2);
+    transform-origin: left;
   }
 }

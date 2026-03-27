@@ -26,6 +26,9 @@ A bilingual recipe platform that connects traditional cuisine with AI-driven fus
 5. User can give feedback → GPT refines without regenerating the image
 6. On save: fusion + ingredients + steps + related recipe links written to DB
 
+### Feed Filtering
+Client-side filter system built as a Compound Component (`FilterSheet.Toggle` + `FilterSheet.Selection`). Active filters are held in a React Context (`activeFilters: Record<string, string[]>`). `CuisineSection` applies them via `matchesFilter()` — toggle-based filters use a dedicated `toggleFilter()` function, selection-based filters use `getLang` + `Array.includes()`.
+
 ### Semantic Search
 `/recipes?q=...` embeds the query and runs cosine distance search via pgvector.
 
@@ -49,7 +52,7 @@ All content stored as `_de`/`_en` column pairs. Frontend switches via `getLang(o
 │   ├── components/      # feed/ + shared/ components
 │   ├── pages/           # FeedPage, RecipeDetailPage
 │   ├── store/           # Zustand stores
-│   ├── utils/           # getLang()
+│   ├── utils/           # getLang(), filter.ts (selectionFilter, toggleFilter)
 │   └── locales/         # de + en translation JSONs
 └── _concept/            # Schema, wireframes, API docs
 ```
@@ -88,7 +91,7 @@ cd frontend && npm install && npm run dev
 
 ## Roadmap
 
-**v1** — Feed, Recipe Detail, Fusion Creator, Semantic Search, Bilingual
+**v1** — Feed with Filter, Recipe Detail, Fusion Creator, Semantic Search, Bilingual ✅ Filter done
 
 **v2** — Auth (JWT), Favorites, Profile, Related Fusions Feed, Fusion feedback UI, RAG in Fusion Creator
 

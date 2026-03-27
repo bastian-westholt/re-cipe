@@ -7,6 +7,7 @@ import FilterButton from "./shared/FilterButton"
 import SearchButton from "./shared/SearchButton"
 import CloseButton from "./shared/CloseButton"
 import { useFilterStore } from "../store/filterStore"
+import FilterSheet from "./shared/FilterSheet/index"
 
 
 
@@ -19,6 +20,7 @@ export default function BottomNav() {
     const searchInputRef = useRef<HTMLInputElement>(null)
 
     const [searchParams, setSearchParams] = useSearchParams()
+    const type = searchParams.get('type') || "original"
 
     useEffect(() => {
         if (isSearchOpen) searchInputRef.current?.focus()
@@ -44,15 +46,15 @@ export default function BottomNav() {
 
     let stateClass = "w-1/2 md:w-1/3 lg:w-1/4 bg-color-1 text-color-2"
     if (isSearchOpen) stateClass = "w-[90dvw] md:w-96 lg:w-[500px] bg-color-2 text-color-1 px-4 py-3"
-    if (isFilterOpen) stateClass = "w-[90dvw] bg-color-2 text-color-1 px-4 py-3"
+    if (isFilterOpen) stateClass = `flex-col w-[90dvw] ${type === "fusion" ? "bg-accent-2" : "bg-accent-1"} text-color-2 px-4 py-3`
 
     const bottomNavClass: string = clsx(
+        "flex items-center justify-evenly",
         "fixed bottom-4 left-1/2 -translate-x-1/2",
         stateClass,
         "transition-all duration-200 ease-in-out",
         "border-2 border-border rounded-2xl",
         "neo-shadow",
-        "flex items-center justify-evenly",
     )
 
     const aiSearchClass = clsx(
@@ -85,9 +87,15 @@ export default function BottomNav() {
         if (isFilterOpen) {
             return(
                 <>
+                    <div className="w-full p-1">
                     <CloseButton onClose={() => {
                         setIsFilterOpen(false)
                     }}/>
+                    </div>
+                    <FilterSheet.Toggle filterKey="quick">QUICK</FilterSheet.Toggle> 
+                    <FilterSheet.Toggle filterKey="easy">EASY</FilterSheet.Toggle> 
+                    <FilterSheet.Selection filterKey="difficulty">DIFFICULTY</FilterSheet.Selection>
+                    <FilterSheet.Selection filterKey="origin_country" bilingual multiple>REGION</FilterSheet.Selection>
                 </>
             )
         }

@@ -22,6 +22,10 @@ export default function RecipeDetailPage() {
     const [servings, setServings] = useState<number>(0)
 
     useEffect(() => {
+      window.scrollTo(0, 0)
+    }, [])
+
+    useEffect(() => {
         fetch(`http://127.0.0.1:5001/recipes/${recipeId}`)
             .then(res => res.json())
             .then(data => {

@@ -8,7 +8,7 @@ import LangToggle from "../components/feed/LangToggle"
 
 export default function FeedPage() {
 
-    const [searchParams ] = useSearchParams()
+    const [ searchParams ] = useSearchParams()
 
     const { setRecipes } = useRecipesStore()
 
@@ -26,7 +26,7 @@ export default function FeedPage() {
             <TypeToggle activeType={type as 'original' | 'fusion'} />
             <AvatarButton />
             <div className="flex flex-col gap-10 pt-20 pb-30 px-4">
-                <CuisineSection type={type as 'original' | 'fusion'}/>
+                <CuisineSection/>
             </div>
         </>
     )

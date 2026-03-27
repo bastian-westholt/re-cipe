@@ -7,5 +7,5 @@ interface FilterStore {
 
 export const useFilterStore = create<FilterStore>((set) => ({
     isFilterOpen: false,
-    setIsFilterOpen: (isFilterOpen) => set({ isFilterOpen })
+    setIsFilterOpen: (isFilterOpen) => set({ isFilterOpen }),
 }))

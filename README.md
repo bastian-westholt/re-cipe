@@ -49,10 +49,13 @@ All content stored as `_de`/`_en` column pairs. Frontend switches via `getLang(o
 ├── seed.py              # 30 bilingual recipes + embeddings
 ├── migrations/          # Alembic versions
 ├── frontend/src/
-│   ├── components/      # feed/ + shared/ components
-│   ├── pages/           # FeedPage, RecipeDetailPage
-│   ├── store/           # Zustand stores
-│   ├── utils/           # getLang(), filter.ts (selectionFilter, toggleFilter)
+│   ├── components/
+│   │   ├── feed/        # RecipeCard, CuisineSection, TypeToggle, FilterButton
+│   │   ├── fusion/      # LoadingAnimation, FusionSkeleton, FusionDetail, GenerateForm
+│   │   └── shared/      # FilterSheet (compound), Badge, BackButton, FusionButton, ...
+│   ├── pages/           # FeedPage, RecipeDetailPage, FusionCreatorPage, RecipePickerPage
+│   ├── store/           # recipesStore, fusionStore, searchStore, filterStore
+│   ├── utils/           # getLang(), filter.ts, styles.ts
 │   └── locales/         # de + en translation JSONs
 └── _concept/            # Schema, wireframes, API docs
 ```
@@ -91,8 +94,8 @@ cd frontend && npm install && npm run dev
 
 ## Roadmap
 
-**v1** — Feed with Filter, Recipe Detail, Fusion Creator, Semantic Search, Bilingual ✅ Filter done
+**v1** — Feed + Filter ✅, Recipe Detail ✅, Fusion Creator (generate → refine → save) ✅, Semantic Search ✅, Bilingual ✅
 
-**v2** — Auth (JWT), Favorites, Profile, Related Fusions Feed, Fusion feedback UI, RAG in Fusion Creator
+**v2** — Auth (JWT), Favorites, Profile, Related Fusions Feed, RAG in Fusion Creator
 
 **v3** — Ratings, Comments, Landing page

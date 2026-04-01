@@ -1,18 +1,19 @@
 import clsx from "clsx"
-import { useParams } from "react-router-dom"
-import FusionButton from "../components/shared/FusionButton"
-import FavoriteButton from "../components/shared/FavoriteButton"
-import Badge from "../components/shared/Badge"
-import { Pot01Icon, Knife02Icon, ServingFoodIcon } from 'hugeicons-react'
-import { useEffect, useState } from "react"
-import type { Recipe } from "../types/recipe"
 import { useTranslation } from "react-i18next"
-import { getLang } from "../utils/lang"
-import { getTypeBG } from "../utils/styles"
-import BackButton from "../components/shared/BackButton"
+import { useLocation, useParams } from "react-router-dom"
+import { useState, useEffect } from "react"
+import type { Recipe } from "../../types/recipe"
+import { getLang } from "../../utils/lang"
+import { getTypeBG } from "../../utils/styles"
+import BackButton from "../shared/BackButton"
+import Badge from "../shared/Badge"
+import { SkeletonLines } from "../shared/Skeleton"
+import { Pot01Icon, Knife02Icon, ServingFoodIcon } from "hugeicons-react"
+import { useFusionContext } from "../../store/fusionStore"
+import GenerateForm from "./GenerateForm"
 
-export default function RecipeDetailPage() {
-
+export default function FusionDetail() {
+    
     // — i18n
     const { t, i18n } = useTranslation()
     const currentLang = i18n.language
@@ -20,23 +21,28 @@ export default function RecipeDetailPage() {
     // — Router
     const { id } = useParams()
 
+    // — Store
+    const { currentFusion } = useFusionContext()
+
     // — State
-    const [recipe, setRecipe] = useState<Recipe>({} as Recipe)
-    const [servings, setServings] = useState<number>(4)
+    const [recipe, setRecipe] = useState<Recipe>(currentFusion || {} as Recipe)
+    const [servings, setServings] = useState<number>(currentFusion?.servings || 4)
 
     // — Effects
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
 
-    useEffect(() => {
-        fetch(`http://127.0.0.1:5001/recipes/${id}`)
-            .then(res => res.json())
-            .then(data => {
-                setRecipe(data)
-                setServings(data.servings)
-            })
-    }, [])
+    /* useEffect(() => {
+        if (!state) {
+            fetch(`http://127.0.0.1:5001/recipes/${id}`)
+                .then(res => res.json())
+                .then(data => {
+                    setRecipe(data)
+                    setServings(data.servings)
+                })
+        }
+    }, []) */
 
     // — Styles
     const heroSectionClass = clsx(
@@ -49,12 +55,6 @@ export default function RecipeDetailPage() {
             <section className={heroSectionClass}>
                 <div className="absolute top-0 m-5">
                     <BackButton />
-                </div>
-                <div className="absolute bottom-0 m-5">
-                    <FusionButton variant="card" />
-                </div>
-                <div className="absolute bottom-0 right-0 m-5">
-                    <FavoriteButton variant="card" />
                 </div>
                 <img className="w-full h-full object-cover rounded-b-2xl" src={recipe.image_url} alt={t("recipeDetailPage.alt")}/>
             </section>
@@ -114,6 +114,7 @@ export default function RecipeDetailPage() {
                     </div>
                 </div>
             </section>
+            <GenerateForm feedback />
         </>
     )
 }

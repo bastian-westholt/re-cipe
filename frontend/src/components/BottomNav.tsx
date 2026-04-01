@@ -1,13 +1,15 @@
 import clsx from "clsx"
 import { useRef, useEffect } from "react"
-import { useSearchParams } from "react-router-dom"
+import { useSearchParams, useLocation } from "react-router-dom"
 import { useSearchStore } from "../store/searchStore"
 import FusionButton from "./shared/FusionButton"
+import ApplyButton from "./shared/ApplyButton"
 import FilterButton from "./shared/FilterButton"
 import SearchButton from "./shared/SearchButton"
 import CloseButton from "./shared/CloseButton"
 import { useFilterStore } from "../store/filterStore"
 import FilterSheet from "./shared/FilterSheet/index"
+import { getTypeBG, getTypeColor } from "../utils/styles"
 
 
 
@@ -21,6 +23,8 @@ export default function BottomNav() {
 
     const [searchParams, setSearchParams] = useSearchParams()
     const type = searchParams.get('type') || "original"
+    const { pathname } = useLocation()
+    const isPicker = pathname === '/fusion/pick'
 
     useEffect(() => {
         if (isSearchOpen) searchInputRef.current?.focus()
@@ -46,21 +50,21 @@ export default function BottomNav() {
 
     let stateClass = "w-1/2 md:w-1/3 lg:w-1/4 bg-color-1 text-color-2"
     if (isSearchOpen) stateClass = "w-[90dvw] md:w-96 lg:w-[500px] bg-color-2 text-color-1 px-4 py-3"
-    if (isFilterOpen) stateClass = `flex-col w-[90dvw] ${type === "fusion" ? "bg-accent-2" : "bg-accent-1"} text-color-2 px-4 py-3`
+    if (isFilterOpen) stateClass = `flex-col w-[90dvw] ${getTypeBG(type, true)} text-color-2 px-4 py-3`
 
     const bottomNavClass: string = clsx(
         "flex items-center justify-evenly",
-        "fixed bottom-4 left-1/2 -translate-x-1/2",
+        "fixed bottom-5 left-1/2 -translate-x-1/2",
         stateClass,
         "transition-all duration-200 ease-in-out",
         "border-2 border-border rounded-2xl",
-        "neo-shadow",
+        "neo-shadow z-10",
     )
 
     const aiSearchClass = clsx(
         "w-11 h-11 flex items-center justify-center",
         "font-display",
-        isAiSearch ? "font-bold text-accent-1" : "text-muted"
+        isAiSearch ? getTypeColor(type, true) : "text-muted"
     )
 
     function renderButtomNav() {
@@ -103,7 +107,7 @@ export default function BottomNav() {
         return(
             <>
                 <SearchButton onOpen={() => setIsSearchOpen(true)}/>
-                <FusionButton variant="fab"/>
+                {isPicker ? <ApplyButton variant="picker"/> : <FusionButton variant="fab"/>}
                 <FilterButton onOpen={() => setIsFilterOpen(true)}/>
             </>
         )

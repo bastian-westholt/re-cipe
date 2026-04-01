@@ -1,12 +1,13 @@
 import { useRecipesStore } from "../../store/recipesStore"
 import type { Recipe } from "../../types/recipe"
 import RecipeCard from "./RecipeCard"
-import { Link, useSearchParams } from "react-router-dom"
+import { useSearchParams } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import { getLang } from "../../utils/lang"
 import { useContext } from "react"
 import { FilterSheetContext } from "../Layout"
 import { toggleFilter } from "../../utils/filter"
+import FusionButton from "../shared/FusionButton"
 
 export default function CuisineSection() {
 
@@ -51,9 +52,7 @@ export default function CuisineSection() {
                         <h1 className="mb-4 font-display">{country}</h1>
                         <div className="flex overflow-x-auto gap-3 scrollbar-hide -mx-4 px-5 py-2">
                             {filtered.filter(r => getLang(r, "origin_country", currentLang) === country).map(recipe =>
-                                <Link key={recipe.id} state={recipe} to={`/recipes/${recipe.id}`} relative="path">
-                                    <RecipeCard recipe={recipe} type={type as 'original' | 'fusion'} />
-                                </Link>
+                                <RecipeCard key={recipe.id} recipe={recipe} />
                             )}
                         </div>
                     </section>
@@ -67,9 +66,7 @@ export default function CuisineSection() {
                     <h1 className="mb-4 font-display">{t("feedPage.allFusions")}</h1>
                     <div className="flex flex-col items-center gap-8 -mx-4 px-5">
                         {filtered.map(recipe =>
-                            <Link key={recipe.id} state={recipe} className="w-full" to={`/recipes/${recipe.id}`} relative="path">
-                                <RecipeCard recipe={recipe} type={type as 'original' | 'fusion'} />
-                            </Link>
+                            <RecipeCard key={recipe.id} recipe={recipe} type={type as 'original' | 'fusion'} />
                         )}
                     </div>
                 </section>

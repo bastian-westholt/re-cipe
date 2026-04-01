@@ -2,6 +2,7 @@ import clsx from "clsx"
 import { BlenderIcon, ServingFoodIcon } from "hugeicons-react"
 import { useSearchParams } from "react-router-dom"
 import { useTranslation } from "react-i18next"
+import { getTypeBG } from "../../utils/styles"
 
 interface TypeToggleProps {
     activeType: 'original' | 'fusion'
@@ -25,7 +26,7 @@ export default function TypeToggle({ activeType }: TypeToggleProps) {
 
     const typeToggleClass = clsx(
         "w-24 h-9 rounded-xl border-2 border-border",
-        type === 'original' ? "bg-accent-1" : "bg-accent-2",
+        getTypeBG(type, true),
         "text-color-2 text-[12px] font-bold",
         "flex items-center justify-center",
         "px-2",

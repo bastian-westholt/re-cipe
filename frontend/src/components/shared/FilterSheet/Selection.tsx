@@ -6,6 +6,7 @@ import { FilterSheetContext } from "../../Layout";
 import { useContext, useState } from "react";
 import type { Recipe } from "../../../types/recipe";
 import { selectionFilter } from "../../../utils/filter";
+import { getTypeBG } from "../../../utils/styles";
 
 interface FilterSelectionProps {
     children: React.ReactNode
@@ -48,7 +49,7 @@ export default function FilterSelection({ children, filterKey, bilingual, multip
     // — Styles
     const checkboxClass = (isActive: boolean) => clsx(
         "w-5 h-5 rounded border-2 border-color-2 flex items-center justify-center flex-shrink-0",
-        isActive ? "bg-accent-2" : "bg-bg"
+        isActive ? getTypeBG(type) : "bg-bg"
     )
 
     const containerClass = clsx(

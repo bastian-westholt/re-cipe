@@ -1,7 +1,10 @@
+from dotenv import load_dotenv
+load_dotenv()
 import json
 from app import app
 from models import db, User, Recipe, Ingredient, Step, Favorite, RelatedRecipe
 import ai_service
+from storage_service import upload_image_to_cloud
 
 with app.app_context():
     db.session.query(Favorite).delete()
@@ -27,9 +30,19 @@ with app.app_context():
     for data in seed_data:
         data['recipe']['user_id'] = master_user.id
         data['recipe']['embedding'] = ai_service.generate_embedding(f"{data['recipe']['title_en']}, {data['recipe']['description_en']}")
+        data['recipe']['image_url'] = None
         recipe = Recipe(**data['recipe'])
         db.session.add(recipe)
         db.session.flush()
+
+        import time
+        time.sleep(15)
+        image_bytes = ai_service.generate_image(data['recipe']['title_en'], data['recipe']['description_en'])
+        if image_bytes:
+            url = upload_image_to_cloud(image_bytes)
+            if url:
+                recipe.image_url = url
+                print(f"Bild generiert: {data['recipe']['title_en']}")
 
         for ing in data['ingredients']:
             ingredient = Ingredient(**ing, recipe_id=recipe.id)

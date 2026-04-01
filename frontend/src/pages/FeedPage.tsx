@@ -15,6 +15,10 @@ export default function FeedPage() {
     const type = searchParams.get('type') || 'original'
 
     useEffect(() => {
+      window.scrollTo(0, 0)
+    }, [type])
+
+    useEffect(() => {
         fetch('http://127.0.0.1:5001/recipes')
             .then(res => res.json())
             .then(data => setRecipes(data))

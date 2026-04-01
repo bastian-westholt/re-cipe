@@ -1,6 +1,8 @@
 import clsx from "clsx"
 import { FilterSheetContext } from "../../Layout"
 import { useContext } from "react"
+import { getTypeBG } from "../../../utils/styles"
+import { useSearchParams } from "react-router-dom"
 
 interface FilterToggleProps {
     children: string
@@ -11,11 +13,16 @@ export default function FilterToggle({ children, filterKey }: FilterToggleProps)
 
     // Context
     const { activeFilters, setFilter, clearFilter } = useContext(FilterSheetContext)
+    
+    // Data
+    const [searchParams] = useSearchParams()
+    const type = searchParams.get('type') ?? "original"
 
     // Derived
     const isFilterActive = filterKey in activeFilters
 
     // Styles
+
     const toggleContainerClass = clsx(
         " flex items-center w-10 h-6 bg-color-2 rounded-full p-1",
         isFilterActive
@@ -26,7 +33,7 @@ export default function FilterToggle({ children, filterKey }: FilterToggleProps)
     const togglePointerClass = clsx(
         "w-4 h-full rounded-full",
         isFilterActive
-            ? "bg-accent-2"
+            ? getTypeBG(type)
             : "bg-color-1"
     )
 

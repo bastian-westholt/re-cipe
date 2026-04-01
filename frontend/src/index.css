@@ -18,6 +18,12 @@
   --font-display: "Bricolage Grotesque", sans-serif;
 }
 
+@keyframes shimmer {
+  from { transform: translateX(-100%) }
+  to { transform: translateX(100%) }
+}
+
+
 @layer utilities {
   .neo-shadow-sm {
     filter: drop-shadow(3px 3px 0px var(--color-border));
@@ -30,6 +36,9 @@
   }
   .neo-shadow-dark {
     filter: drop-shadow(3px 3px 0px #FD72DB);
+  }
+  .animate-shimmer {
+    animation: shimmer 1.5s infinite;
   }
 }
 

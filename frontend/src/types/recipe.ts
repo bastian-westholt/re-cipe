@@ -1,24 +1,30 @@
 export interface Ingredients {
     id: number
-    name: string
+    name_de: string
+    name_en: string
     amount: number
-    unit: string
+    unit_de: string
+    unit_en: string
     position: number
 }
 
 export interface Step {
     id: number
     step_number: number
-    instruction: string
+    instruction_de: string
+    instruction_en: string
 }
 
 export interface Recipe {
-    id: number
+    id?: number
     type: 'original' | 'fusion'
-    title: string
-    description: string
+    title_de: string
+    title_en: string
+    description_de: string
+    description_en: string
     image_url: string | undefined
-    origin_country: string | null
+    origin_country_de: string | null
+    origin_country_en: string | null
     origin_region: string | null
     ingredients: Ingredients[]
     steps: Step[]

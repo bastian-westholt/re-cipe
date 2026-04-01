@@ -142,31 +142,49 @@ def generate_embedding(query):
         logging.error(f'Embedding Error: {e}')
         return None
 
-def generate_image(title, description):
+BG_COLORS = [
+    "#7EB3FF",  # muted blue
+    "#F9A8E8",  # muted pink
+    "#D4F0A0",  # muted lime
+    "#F4857A",  # muted red
+    "#F7C47A",  # muted orange
+]
+
+def generate_image(title, description, model="nanobanana-2"):
+    import random
+    bg = random.choice(BG_COLORS)
     try:
-        # image_prompt = f'{title}, {description}: Create food photography of given recipe, professional lighting, top-down view'
-        image_prompt = f'Neobrutalism illustration of {title}: {description}. Flat graphic style, bold black outlines, geometric shapes, editorial food illustration, poster art. Color palette: electric blue, lime green, hot pink, cream white, black. No text, no labels, no letters, no gradients, no photorealism, no shadows'
+        image_prompt = (
+            f'Japanese editorial food illustration, top-down flat lay of {title}. {description}. '
+            f'Bold solid {bg} background, bold black outlines, halftone dot shading, vibrant appetizing food colors. '
+            f'Chopsticks, small bowls and sauce dishes arranged around the main dish. '
+            f'Style: modern Japanese pop illustration, detailed but graphic, appetizing and colorful. '
+            f'No text, no letters, no typography.'
+        )
         encoded_prompt = urllib.parse.quote(image_prompt)
 
         response = requests.get(
             f'https://gen.pollinations.ai/image/{encoded_prompt}',
             params={
-                "model": "flux-2-dev",
+                "model": model,
                 "width": "1024",
                 "height": "1024",
-                "enhance": "true"
+                "enhance": "true",
+                "nologo": "true",
             },
             headers={
                 "Authorization": f"Bearer {os.getenv('POLLINATIONS_API_KEY')}"
             },
-            timeout=(5, 60)
+            timeout=(5, 90)
         )
 
         if response.status_code != 200:
-            logging.warning(f"Pollinations Fehler: {response.status_code}")
+            retry_after = response.headers.get("Retry-After", "—")
+            logging.warning(f"Pollinations Fehler: {response.status_code} model={model} | Retry-After: {retry_after}s | Body: {response.text[:500]}")
             return None
         return response.content
     except requests.exceptions.Timeout:
+        logging.warning(f"Pollinations Timeout model={model}")
         return None
 
 def generate_fusion(recipes, messages):

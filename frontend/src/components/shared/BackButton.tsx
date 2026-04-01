@@ -1,10 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft02Icon } from "hugeicons-react"
 import clsx from "clsx";
+import { useFusionContext } from "../../store/fusionStore";
 
 export default function BackButton() {
 
     const navigate = useNavigate()
+
+    const { resetStore } = useFusionContext()
 
     const backButtonClass = clsx(
         "flex items-center justify-center",
@@ -13,6 +16,7 @@ export default function BackButton() {
     )
 
     function handleClick() {
+        resetStore()
         navigate(-1)
     }
 

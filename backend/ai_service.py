@@ -3,6 +3,7 @@ import requests
 from openai import OpenAI
 from dotenv import load_dotenv
 import urllib.parse
+import random
 from storage_service import upload_image_to_cloud
 import os
 import logging
@@ -79,6 +80,14 @@ Regeln:
 
 OLD_SYSTEM_PROMPT = '''"Du bist ein Spitzenkoch ausgezeichnet mit einem Michelinstern und viel Raffinesse. Du erhältst 2-5 traditionelle Rezepte als Inspiration. Erstelle daraus EIN neues, kreatives Fusion-Rezept, das einige Elemente aus allen gegebenen Rezepten kombiniert und neukomponiert oder sogar leicht abgewandelt um den bestmöglichen Geschmack zu ermöglichen. Das Ergebnis muss realistisch kochbar sein, des weiteren muss das Rezept kohärent sein. Es gibt nur die Schwierigkeitsgrade ('hard', 'medium', 'easy'). Antworte auf Deutsch."'''
 
+BG_COLORS = [
+    "#7EB3FF",  # muted blue
+    "#F9A8E8",  # muted pink
+    "#D4F0A0",  # muted lime
+    "#F4857A",  # muted red
+    "#F7C47A",  # muted orange
+]
+
 load_dotenv()
 GPT_KEY = os.getenv('GPT_API_KEY')
 if not GPT_KEY:
@@ -142,16 +151,7 @@ def generate_embedding(query):
         logging.error(f'Embedding Error: {e}')
         return None
 
-BG_COLORS = [
-    "#7EB3FF",  # muted blue
-    "#F9A8E8",  # muted pink
-    "#D4F0A0",  # muted lime
-    "#F4857A",  # muted red
-    "#F7C47A",  # muted orange
-]
-
 def generate_image(title, description, model="nanobanana-2"):
-    import random
     bg = random.choice(BG_COLORS)
     try:
         image_prompt = (

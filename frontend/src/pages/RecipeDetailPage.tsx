@@ -3,12 +3,14 @@ import { useParams } from "react-router-dom"
 import FusionButton from "../components/shared/FusionButton"
 import FavoriteButton from "../components/shared/FavoriteButton"
 import Badge from "../components/shared/Badge"
+import IngedientsList from "../components/recipe/IngedientsList"
+import StepsList from "../components/recipe/StepsList"
+import PortionScaler from "../components/recipe/PortionScaler"
 import { Pot01Icon, Knife02Icon, ServingFoodIcon } from 'hugeicons-react'
 import { useEffect, useState } from "react"
 import type { Recipe } from "../types/recipe"
 import { useTranslation } from "react-i18next"
 import { getLang } from "../utils/lang"
-import { getTypeBG } from "../utils/styles"
 import BackButton from "../components/shared/BackButton"
 
 export default function RecipeDetailPage() {
@@ -72,47 +74,9 @@ export default function RecipeDetailPage() {
                     }
                     <Badge icon={<ServingFoodIcon size={20} />} label={`${recipe.prep_time + recipe.cook_time} ${t("recipeDetailPage.min")}`} variant={recipe.type === 'fusion' ? 'fusion' : 'default'}/>
                 </div>
-                <form className="flex w-full gap-3 h-14 mb-6">
-                    <label className={`flex items-center w-2/3 ${getTypeBG(recipe.type, true)} border-2 border-border rounded-xl py-3 px-5 font-semibold neo-shadow-sm`} htmlFor="servings">{t("recipeDetailPage.portions")}</label>
-                    <input className="w-1/3 bg-white border-2 border-border rounded-xl py-3 px-5 font-semibold neo-shadow-sm" type="text" inputMode="numeric" name="servings" value={servings} onChange={(e) => {setServings(e.target.value === '' ? 0 : Number(e.target.value))}} />
-                </form>
-                <div className="mb-5">
-                    <div className="border-2 border-border rounded-2xl overflow-hidden neo-shadow-box">
-                        <div className={`${getTypeBG(recipe.type, true)} border-b-2 border-border px-5 py-3`}>
-                            <h3 className="text-color-2">{t("recipeDetailPage.ingredients")}</h3>
-                        </div>
-                        <ul className="flex flex-col">
-                            {recipe.ingredients?.map((ing: any, i: number) => (
-                                <li key={ing.id} className={`flex items-center justify-between px-5 py-4 border-b border-border/10 ${i % 2 === 0 ? 'bg-white' : 'bg-surface'}`}>
-                                    <div className="font-semibold">{getLang(ing, "name", currentLang)}</div>
-                                    <div className="whitespace-nowrap ml-6 font-bold text-primary">
-                                        {((ing.amount/recipe.servings) * servings) % 1 === 0
-                                            ? (ing.amount/recipe.servings) * servings
-                                            : ((ing.amount/recipe.servings) * servings).toFixed(1)} {getLang(ing, "unit", currentLang)}
-                                    </div>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                </div>
-                <div>
-                    <div className="border-2 border-border rounded-2xl overflow-hidden neo-shadow-box">
-                        <div className={`${getTypeBG(recipe.type)} border-b-2 border-border px-5 py-3`}>
-                            <h3 className="text-color-2">{t("recipeDetailPage.steps")}</h3>
-                        </div>
-                        <div className="flex flex-col">
-                            {recipe.steps?.map((stp: any, i: number) => (
-                                <div key={stp.id} className={`border-b border-border/10 last:border-b-0 py-5 px-5 ${i % 2 === 0 ? 'bg-white' : 'bg-surface'}`}>
-                                    <div className="flex items-center justify-between mb-3">
-                                        <div className="font-bold">{t("recipeDetailPage.step")}</div>
-                                        <div className="w-8 h-8 bg-primary text-white rounded-lg flex items-center justify-center font-bold text-sm shrink-0">{stp.step_number}</div>
-                                    </div>
-                                    <p className="text-black/80">{getLang(stp, "instruction", currentLang)}</p>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
+                <PortionScaler type={recipe.type} servings={servings} onChange={setServings} />
+                <IngedientsList recipe={recipe} servings={servings} />
+                <StepsList recipe={recipe} />
             </section>
         </>
     )

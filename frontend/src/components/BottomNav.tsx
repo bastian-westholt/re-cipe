@@ -1,6 +1,6 @@
 import clsx from "clsx"
 import { useRef, useEffect } from "react"
-import { useSearchParams, useLocation } from "react-router-dom"
+import { useSearchParams, useLocation, useNavigate } from "react-router-dom"
 import { useSearchStore } from "../store/searchStore"
 import FusionButton from "./shared/FusionButton"
 import ApplyButton from "./shared/ApplyButton"
@@ -10,6 +10,7 @@ import CloseButton from "./shared/CloseButton"
 import { useFilterStore } from "../store/filterStore"
 import FilterSheet from "./shared/FilterSheet/index"
 import { getTypeBG, getTypeColor } from "../utils/styles"
+import { useFusionContext } from "../store/fusionStore"
 
 
 
@@ -18,13 +19,15 @@ export default function BottomNav() {
     const { isSearchOpen, setIsSearchOpen } = useSearchStore()
     const { isAiSearch, setIsAiSearch } = useSearchStore()
     const { isFilterOpen, setIsFilterOpen } = useFilterStore()
+    const { generateFusion } = useFusionContext()
 
     const searchInputRef = useRef<HTMLInputElement>(null)
 
     const [searchParams, setSearchParams] = useSearchParams()
     const type = searchParams.get('type') || "original"
     const { pathname } = useLocation()
-    const isPicker = pathname === '/fusion/pick'
+    const navigate = useNavigate()
+    const isPicker = pathname === '/fusion'
 
     useEffect(() => {
         if (isSearchOpen) searchInputRef.current?.focus()
@@ -53,7 +56,7 @@ export default function BottomNav() {
     if (isFilterOpen) stateClass = `flex-col w-[90dvw] ${getTypeBG(type, true)} text-color-2 px-4 py-3`
 
     const bottomNavClass: string = clsx(
-        "flex items-center justify-evenly",
+        "joyride-search flex items-center justify-evenly",
         "fixed bottom-5 left-1/2 -translate-x-1/2",
         stateClass,
         "transition-all duration-200 ease-in-out",
@@ -107,7 +110,7 @@ export default function BottomNav() {
         return(
             <>
                 <SearchButton onOpen={() => setIsSearchOpen(true)}/>
-                {isPicker ? <ApplyButton variant="picker"/> : <FusionButton variant="fab"/>}
+                <div className="joyride-generate">{isPicker ? <FusionButton variant="fab" onClick={() => generateFusion()} /> : <FusionButton variant="fab" onClick={() => navigate('/fusion')}/>}</div>
                 <FilterButton onOpen={() => setIsFilterOpen(true)}/>
             </>
         )

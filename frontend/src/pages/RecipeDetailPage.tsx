@@ -1,5 +1,5 @@
 import clsx from "clsx"
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import FusionButton from "../components/shared/FusionButton"
 import FavoriteButton from "../components/shared/FavoriteButton"
 import Badge from "../components/shared/Badge"
@@ -12,6 +12,7 @@ import type { Recipe } from "../types/recipe"
 import { useTranslation } from "react-i18next"
 import { getLang } from "../utils/lang"
 import BackButton from "../components/shared/BackButton"
+import { Heatmap, PaperTexture } from '@paper-design/shaders-react';
 
 export default function RecipeDetailPage() {
 
@@ -53,7 +54,9 @@ export default function RecipeDetailPage() {
                     <BackButton />
                 </div>
                 <div className="absolute bottom-0 m-5">
-                    <FusionButton variant="card" />
+                    <Link to={`/fusion`} state={recipe}>
+                        <FusionButton variant="card" />
+                    </Link>
                 </div>
                 <div className="absolute bottom-0 right-0 m-5">
                     <FavoriteButton variant="card" />

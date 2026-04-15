@@ -4,6 +4,7 @@ import { useFusionContext } from "../store/fusionStore";
 import FusionSkeleton from "../components/fusion/FusionSkeleton";
 import FusionDetail from "../components/fusion/FusionDetail";
 import LoadingAnimation from "../components/fusion/LoadingAnimation";
+import RecipePicker from "../components/fusion/RecipePicker";
 
 export default function FusionCreatorPage() {
 
@@ -34,6 +35,6 @@ export default function FusionCreatorPage() {
 
     if (!ready) return null
     if (isGenerating) return <LoadingAnimation />
-    if (!currentFusion) return <FusionSkeleton />
+    if (!currentFusion) return <RecipePicker />
     return <FusionDetail />
 }

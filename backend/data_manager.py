@@ -63,7 +63,7 @@ class DataManager:
         ingredients = obj.pop("ingredients")
         steps = obj.pop("steps")
         recipe_ids = obj.pop("recipe_ids")
-        if "image_url" not in obj:
+        if not obj.get('image_url'):
             image = ai_service.generate_image(obj["title_en"], obj["description_en"])
             obj["image_url"] = storage_service.upload_image_to_cloud(image) if image else None
         obj['embedding'] = ai_service.generate_embedding(f'{obj["title_en"]}, {obj["description_en"]}')

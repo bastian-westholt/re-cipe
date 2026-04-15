@@ -4,8 +4,7 @@ import RecipeCard from "./RecipeCard"
 import { useSearchParams } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import { getLang } from "../../utils/lang"
-import { useContext } from "react"
-import { FilterSheetContext } from "../Layout"
+import { useFilterStore } from "../../store/filterStore"
 import { toggleFilter } from "../../utils/filter"
 import FusionButton from "../shared/FusionButton"
 
@@ -13,7 +12,7 @@ export default function CuisineSection() {
 
     // — Data
     const { recipes } = useRecipesStore()
-    const { activeFilters } = useContext(FilterSheetContext)
+    const { activeFilters } = useFilterStore()
     const { t, i18n } = useTranslation()
     const currentLang = i18n.language
     const [searchParams] = useSearchParams()

@@ -70,9 +70,9 @@ def create_fusion():
     if not fusionObj:
         return jsonify({"error": "Fusion nicht gefunden"}), 404
 
-    if not messages:
+    '''if not messages:
         image = ai_service.generate_image(fusionObj["title_en"], fusionObj["description_en"])
-        fusionObj["image_url"] = storage_service.upload_image_to_cloud(image) if image else None
+        fusionObj["image_url"] = storage_service.upload_image_to_cloud(image) if image else None'''
 
     return jsonify(fusionObj)
 

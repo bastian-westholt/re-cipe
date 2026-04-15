@@ -5,6 +5,7 @@ import TypeToggle from "../components/feed/TypeToggle"
 import AvatarButton from "../components/feed/AvatarButton"
 import CuisineSection from "../components/feed/CuisineSection"
 import LangToggle from "../components/feed/LangToggle"
+import BottomNav from "../components/BottomNav"
 
 export default function FeedPage() {
 
@@ -32,6 +33,7 @@ export default function FeedPage() {
             <div className="flex flex-col gap-10 pt-20 pb-30 px-4">
                 <CuisineSection/>
             </div>
+            <BottomNav />
         </>
     )
 }

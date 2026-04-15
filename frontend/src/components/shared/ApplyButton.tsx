@@ -1,4 +1,4 @@
-import { Tick02Icon } from "hugeicons-react"
+import { BlenderIcon } from "hugeicons-react"
 import { useNavigate } from "react-router-dom"
 import { useFusionContext } from "../../store/fusionStore"
 
@@ -22,7 +22,7 @@ export default function ApplyButton({ variant="default" }: ApplyButtonProps) {
                 onClick={() => isReady && navigate(-1)}
                 className={`border-2 flex items-center justify-center bg-accent-2 border-primary neo-shadow w-16 h-16 rounded-2xl my-2 mr-1 ${!isReady ? "opacity-40" : ""}`}
             >
-                <Tick02Icon size={32} className="text-white" />
+                <BlenderIcon size={32} className="text-white" />
             </button>
         )
     } else if (variant === 'default') {

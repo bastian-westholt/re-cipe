@@ -1,18 +1,19 @@
 import { useSearchParams } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import { Tick02Icon } from "hugeicons-react"
-import { useRecipesStore } from "../store/recipesStore"
-import { useFusionContext } from "../store/fusionStore"
-import { getLang } from "../utils/lang"
-import { getTypeBG } from "../utils/styles"
-import { toggleFilter } from "../utils/filter"
-import type { Recipe } from "../types/recipe"
+import { useRecipesStore } from "../../store/recipesStore"
+import { useFusionContext } from "../../store/fusionStore"
+import { getLang } from "../../utils/lang"
+import { getTypeBG } from "../../utils/styles"
+import { toggleFilter } from "../../utils/filter"
+import type { Recipe } from "../../types/recipe"
 import clsx from "clsx"
-import { useContext } from "react"
-import { FilterSheetContext } from "../components/Layout"
-import CheckerToggle from "../components/shared/CheckerToggle"
+import { useFilterStore } from "../../store/filterStore"
+import CheckerToggle from "../shared/CheckerToggle"
+import BottomNav from "../BottomNav"
+import BackButton from "../shared/BackButton"
 
-export default function RecipePickerPage() {
+export default function RecipePicker() {
 
     // — i18n
     const { i18n } = useTranslation()
@@ -25,7 +26,7 @@ export default function RecipePickerPage() {
     // — Store
     const { recipes } = useRecipesStore()
     const { selectedRecipes, setSelectedRecipes } = useFusionContext()
-    const { activeFilters } = useContext(FilterSheetContext)
+    const { activeFilters } = useFilterStore()
 
     // — Derived
     const matchesSearch = (r: Recipe) =>
@@ -61,8 +62,9 @@ export default function RecipePickerPage() {
     return (
         <>
             {/* — Selection Bar */}
-            <div className="fixed top-4 left-1/2 -translate-x-1/2 w-[90dvw] bg-color-2 border-2 border-border rounded-2xl neo-shadow px-4 py-3 flex items-center gap-3 z-11">
+            <div className="joyride-recipe-slots fixed min-h-19 top-4 left-1/2 -translate-x-1/2 w-[90dvw] bg-color-2 border-2 border-border rounded-2xl neo-shadow px-4 py-3 flex items-center gap-3 z-11">
                 <div className="flex gap-2 flex-1 overflow-x-auto scrollbar-hide">
+                    <BackButton variant="icon"/>
                     {selectedRecipes.length === 0 && (
                         <p className="text-muted text-sm">Wähle 2–5 Rezepte</p>
                     )}
@@ -107,7 +109,7 @@ export default function RecipePickerPage() {
                     </section>
                 ))}
             </div>
-
+            <BottomNav />
         </>
     )
 }

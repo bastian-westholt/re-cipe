@@ -2,8 +2,8 @@ import clsx from "clsx";
 import { useSearchParams } from "react-router-dom";
 import { useRecipesStore } from "../../../store/recipesStore";
 import { useTranslation } from "react-i18next"
-import { FilterSheetContext } from "../../Layout";
-import { useContext, useState } from "react";
+import { useFilterStore } from "../../../store/filterStore";
+import { useState } from "react";
 import type { Recipe } from "../../../types/recipe";
 import { selectionFilter } from "../../../utils/filter";
 import { getTypeBG } from "../../../utils/styles";
@@ -18,7 +18,7 @@ interface FilterSelectionProps {
 export default function FilterSelection({ children, filterKey, bilingual, multiple }: FilterSelectionProps) {
 
     // — Context
-    const { activeFilters, setFilter, clearFilter } = useContext(FilterSheetContext)
+    const { activeFilters, setFilter, clearFilter } = useFilterStore()
 
     // — State
     const [isOpen, setIsOpen] = useState(false)

@@ -27,11 +27,13 @@ export default function RecipeCard({ recipe }: RecipeCardProps) {
 
     return (
         <div className={cardClass}>
+            {type === "original" && (
             <div className="absolute top-0 m-4 w-9 h-9 fit">
                 <Link to={`fusion`} state={recipe}>
                     <FusionButton variant="mini"/>
                 </Link>
             </div>
+            )}
             <Link state={recipe} to={`/recipes/${recipe.id}`} relative="path">
                 <img className="w-full h-full object-cover" src={recipe.image_url} alt="A delicious meal"/>
                 <div className={`absolute bottom-0 w-full border-t-2 border-border rounded-t-2xl p-3 ${getTypeBG(type)}`}>

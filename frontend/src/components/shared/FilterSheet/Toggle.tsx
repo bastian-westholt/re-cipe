@@ -1,6 +1,5 @@
 import clsx from "clsx"
-import { FilterSheetContext } from "../../Layout"
-import { useContext } from "react"
+import { useFilterStore } from "../../../store/filterStore"
 import { getTypeBG } from "../../../utils/styles"
 import { useSearchParams } from "react-router-dom"
 
@@ -12,7 +11,7 @@ interface FilterToggleProps {
 export default function FilterToggle({ children, filterKey }: FilterToggleProps) {
 
     // Context
-    const { activeFilters, setFilter, clearFilter } = useContext(FilterSheetContext)
+    const { activeFilters, setFilter, clearFilter } = useFilterStore()
     
     // Data
     const [searchParams] = useSearchParams()

@@ -21,7 +21,7 @@ export default function TypeToggle({ activeType }: TypeToggleProps) {
         "rounded-2xl bg-color-1 border-2 border-border",
         "neo-shadow",
         "flex items-center justify-evenly p-1",
-        "z-10"
+        "z-10 joyride-type-toggle"
     )
 
     const typeToggleClass = clsx(

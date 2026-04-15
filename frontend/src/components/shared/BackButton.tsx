@@ -1,22 +1,32 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { ArrowLeft02Icon } from "hugeicons-react"
 import clsx from "clsx";
 import { useFusionContext } from "../../store/fusionStore";
 
-export default function BackButton() {
+interface BackButtonProps {
+    variant?: string
+}
+
+export default function BackButton({ variant='default' }: BackButtonProps) {
 
     const navigate = useNavigate()
 
     const { resetStore } = useFusionContext()
 
+    const { state } = useLocation()
+
     const backButtonClass = clsx(
         "flex items-center justify-center",
-        "w-11 h-11 bg-color-2 border-2 border-border rounded-xl",
-        "neo-shadow-sm",
+        variant === 'icon' ? "w-auto h-auto mr-1" : "w-11 h-11",
+        variant !== 'icon' && "bg-color-2 border-2 border-border rounded-xl neo-shadow-sm",
     )
 
     function handleClick() {
         resetStore()
+        if (state === "fusion") {
+            navigate('/')
+            return
+        }
         navigate(-1)
     }
 

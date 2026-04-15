@@ -10,6 +10,7 @@ import StepsList from "../recipe/StepsList"
 import { Pot01Icon, Knife02Icon, ServingFoodIcon } from "hugeicons-react"
 import { useFusionContext } from "../../store/fusionStore"
 import GenerateForm from "./GenerateForm"
+import { Heatmap } from '@paper-design/shaders-react';
 
 export default function FusionDetail() {
     
@@ -18,6 +19,7 @@ export default function FusionDetail() {
     const currentLang = i18n.language
 
     // — State
+    const { imageUrl } = useFusionContext()
     const recipe = useFusionContext().currentFusion!
     const [servings, setServings] = useState<number>(recipe.servings || 4)
 
@@ -35,10 +37,32 @@ export default function FusionDetail() {
     return (
         <>
             <section className={heroSectionClass}>
-                <div className="absolute top-0 m-5">
+                {
+                !imageUrl
+                    ? <div className="absolute inset-0 overflow-hidden rounded-b-2xl flex justify-center items-center z-10">
+                        <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle, rgba(0,0,0,0.18) 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
+                        <Heatmap
+                            image="/placeholder.svg"
+                            colors={["#0167FE", "#FD72DB", "#C7EF8E", "#0167FE", "#FD72DB"]}
+                            colorBack="#fffdf587"
+                            contour={0.7}
+                            angle={0}
+                            noise={0.1}
+                            innerGlow={0.3}
+                            outerGlow={0.3}
+                            speed={1}
+                            scale={1.25}
+                            fit="cover"
+                            style={{ width: '100%', height: '100%' }}
+                        />
+                        <h1 className="absolute text-white text-4xl font-display -translate-x-6 mix-blend-difference">PLACEHOLDER</h1>
+                        <h1 className="absolute text-accent-1 text-4xl font-display -translate-x-6 mix-blend-hue">PLACEHOLDER</h1>
+                    </div>
+                    : <img className="w-full h-full object-cover rounded-b-2xl" src={recipe.image_url || imageUrl || ''} alt={t("recipeDetailPage.alt")}/>
+                }
+                <div className="absolute top-0 m-5 z-10">
                     <BackButton />
                 </div>
-                <img className="w-full h-full object-cover rounded-b-2xl" src={recipe.image_url} alt={t("recipeDetailPage.alt")}/>
             </section>
             <section className="p-5 mb-23">
                 <h1 className="mb-3 font-display">{getLang(recipe, "title", currentLang)}</h1>

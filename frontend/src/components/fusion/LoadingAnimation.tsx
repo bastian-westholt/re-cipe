@@ -27,20 +27,17 @@ const STYLES = `
 }
 
 @keyframes panel-fly-a {
-  0%   { transform: translateX(115%) rotate(9deg);  animation-timing-function: cubic-bezier(0.75,0,1,1); }
-  10%  { transform: translateX(-14%) rotate(-3deg); animation-timing-function: cubic-bezier(0.08,0.9,0.15,1); }
+  0%   { transform: translateX(115%) rotate(9deg);  animation-timing-function: cubic-bezier(0.0,0.7,0.1,1); }
   18%  { transform: translateX(0%)   rotate(0deg); }
   100% { transform: translateX(0%)   rotate(0deg); }
 }
 @keyframes panel-fly-b {
-  0%   { transform: translateX(115%) rotate(-8deg); animation-timing-function: cubic-bezier(0.75,0,1,1); }
-  10%  { transform: translateX(-14%) rotate(3deg);  animation-timing-function: cubic-bezier(0.08,0.9,0.15,1); }
+  0%   { transform: translateX(115%) rotate(-8deg); animation-timing-function: cubic-bezier(0.0,0.7,0.1,1); }
   18%  { transform: translateX(0%)   rotate(0deg); }
   100% { transform: translateX(0%)   rotate(0deg); }
 }
 @keyframes panel-fly-c {
-  0%   { transform: translateX(150%) rotate(14deg); animation-timing-function: cubic-bezier(0.75,0,1,1); }
-  10%  { transform: translateX(-14%) rotate(-3deg); animation-timing-function: cubic-bezier(0.08,0.9,0.15,1); }
+  0%   { transform: translateX(150%) rotate(14deg); animation-timing-function: cubic-bezier(0.0,0.7,0.1,1); }
   18%  { transform: translateX(0%)   rotate(0deg); }
   100% { transform: translateX(0%)   rotate(0deg); }
 }

@@ -5,3 +5,5 @@ cloudinary
 flask_sqlalchemy
 pgvector
 psycopg2-binary
+alembic
+python-dotenv

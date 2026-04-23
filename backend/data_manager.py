@@ -2,7 +2,7 @@ from sqlalchemy import select
 import logging
 import ai_service
 import storage_service
-from models import db, User, Recipe, Ingredient, Step, RelatedRecipe
+from models import db, User, Recipe, Ingredient, Step, RelatedRecipe, Theme
 
 
 class DataManager:
@@ -34,6 +34,30 @@ class DataManager:
         ).scalars().all()
         return recipes
 
+    def get_recipes_by_embedding(self, title, page):
+
+        slug = title.lower().replace(' ', '-')
+        theme_found = db.session.execute(
+            select(Theme).where(Theme.slug == slug)
+        ).scalar()
+
+        if theme_found:
+            themed_recipes = db.session.execute(
+                select(Recipe).order_by(Recipe.embedding.cosine_distance(theme_found.embedding)).limit(9).offset(page * 9)
+            ).scalars().all()
+            return themed_recipes
+        else:
+            theme_embedding = ai_service.generate_embedding(title)
+            if not theme_embedding:
+                return []
+            theme = Theme(slug=slug, title=title, embedding=theme_embedding)
+            db.session.add(theme)
+            db.session.commit()
+            themed_recipes = db.session.execute(
+                select(Recipe).order_by(Recipe.embedding.cosine_distance(theme.embedding)).limit(3).offset(
+                    page * 3)
+            ).scalars().all()
+            return themed_recipes
 
     def get_recipe_by_id(self, recipe_id):
 
@@ -46,7 +70,6 @@ class DataManager:
         return recipe
 
     def get_multiple_recipes_by_id(self, recipe_ids):
-
         recipes = db.session.execute(
             select(Recipe).where(Recipe.id.in_(recipe_ids))
         ).scalars().all()
@@ -55,6 +78,16 @@ class DataManager:
             self.get_ings_and_stps_for_recipe(recipe)
 
         return recipes
+
+    def get_related_recipes_by_id(self, recipe_id):
+        related_recipes = db.session.execute(
+            select(Recipe)
+                .join(RelatedRecipe, RelatedRecipe.original_id == Recipe.id)
+                .where(RelatedRecipe.fusion_id == recipe_id)
+                .order_by(RelatedRecipe.position)
+        ).scalars().all()
+
+        return related_recipes
 
     def get_master_user(self):
         return db.session.execute(select(User).where(User.role == "admin")).scalar()

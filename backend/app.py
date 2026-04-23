@@ -48,6 +48,24 @@ def get_recipe_by_id(recipe_id):
         return jsonify({"error": "Rezept nicht gefunden"}), 404
     return jsonify(recipe.to_dict())
 
+@app.route('/recipes/<int:recipe_id>/related')
+def get_related_recipes_by_id(recipe_id):
+    related_recipes = data_manager.get_related_recipes_by_id(recipe_id)
+    if not related_recipes:
+        return jsonify({"error": "No related recipes found!"}), 500
+    return jsonify([recipe.to_dict() for recipe in related_recipes])
+
+@app.route('/recipes/themes', methods=['POST'])
+def get_themed_recipes_by_title():
+    data = request.get_json()
+    title = data['title']
+    page = request.args.get('page', 0, type=int)
+
+    themed_recipes = data_manager.get_recipes_by_embedding(title, page)
+    if not themed_recipes:
+        return jsonify({'error': "Themed recipes could not be loaded"}), 500
+    return jsonify([recipe.to_dict() for recipe in themed_recipes])
+
 @app.route('/recipes/fusion/create', methods=['POST'])
 def create_fusion():
     data = request.get_json()

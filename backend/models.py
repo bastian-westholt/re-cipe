@@ -204,3 +204,25 @@ class Step(db.Model):
             "recipe_id": self.recipe_id
         }
 
+class Theme(db.Model):
+
+    __tablename__ = 'themes'
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    slug = db.Column(db.String(255), nullable=False)
+    title = db.Column(db.String(255), nullable=False)
+    embedding = db.Column(Vector(1536), nullable=True)
+
+    def __repr__(self):
+        return f'Theme(id: "{self.id}", slug: "{self.slug}", title: "{self.title}", embedding: "{self.embedding}")'
+
+    def __str__(self):
+        return f'{self.title}'
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "slug": self.slug,
+            "title": self.title,
+        }
+

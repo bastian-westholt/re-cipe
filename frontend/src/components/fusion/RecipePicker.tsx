@@ -11,7 +11,6 @@ import clsx from "clsx"
 import { useFilterStore } from "../../store/filterStore"
 import CheckerToggle from "../shared/CheckerToggle"
 import BottomNav from "../BottomNav"
-import BackButton from "../shared/BackButton"
 
 export default function RecipePicker() {
 
@@ -61,25 +60,6 @@ export default function RecipePicker() {
 
     return (
         <>
-            {/* — Selection Bar */}
-            <div className="joyride-recipe-slots fixed min-h-19 top-4 left-1/2 -translate-x-1/2 w-[90dvw] bg-color-2 border-2 border-border rounded-2xl neo-shadow px-4 py-3 flex items-center gap-3 z-11">
-                <div className="flex gap-2 flex-1 overflow-x-auto scrollbar-hide">
-                    <BackButton variant="icon"/>
-                    {selectedRecipes.length === 0 && (
-                        <p className="text-muted text-sm">Wähle 2–5 Rezepte</p>
-                    )}
-                    {selectedRecipes.map(r => (
-                        <div
-                            key={r.id}
-                            onClick={() => setSelectedRecipes(selectedRecipes.filter(s => s.id !== r.id))}
-                            className="w-12 h-12 rounded-xl border-2 border-border overflow-hidden shrink-0"
-                        >
-                            <img className="w-full h-full object-cover" src={r.image_url} alt="" />
-                        </div>
-                    ))}
-                </div>
-            </div>
-
             {/* — Recipe List */}
             <div className="flex flex-col gap-10 pt-32 pb-30 px-4">
                 {countries.map(country => (

@@ -1,12 +1,12 @@
-import { useRecipesStore } from "../../store/recipesStore"
-import type { Recipe } from "../../types/recipe"
+import { useRecipesStore } from "../../../store/recipesStore"
+import type { Recipe } from "../../../types/recipe"
 import RecipeCard from "./RecipeCard"
+import { RecipeSection } from "./"
 import { useSearchParams } from "react-router-dom"
 import { useTranslation } from "react-i18next"
-import { getLang } from "../../utils/lang"
-import { useFilterStore } from "../../store/filterStore"
-import { toggleFilter } from "../../utils/filter"
-import FusionButton from "../shared/FusionButton"
+import { getLang } from "../../../utils/lang"
+import { useFilterStore } from "../../../store/filterStore"
+import { toggleFilter } from "../../../utils/filter"
 
 export default function CuisineSection() {
 
@@ -47,14 +47,13 @@ export default function CuisineSection() {
         return (
             <>
                 {countries.map(country => (
-                    <section key={country} className="flex flex-col gap-1">
-                        <h1 className="mb-4 font-display">{country}</h1>
-                        <div className="flex overflow-x-auto gap-3 scrollbar-hide -mx-4 px-5 py-2">
+                    <RecipeSection key={country} title={country as string}>
+                        <RecipeSection.ScrollRow>
                             {filtered.filter(r => getLang(r, "origin_country", currentLang) === country).map(recipe =>
                                 <RecipeCard key={recipe.id} recipe={recipe} />
                             )}
-                        </div>
-                    </section>
+                        </RecipeSection.ScrollRow>
+                    </RecipeSection>
                 ))}
             </>
         )
@@ -65,7 +64,7 @@ export default function CuisineSection() {
                     <h1 className="mb-4 font-display">{t("feedPage.allFusions")}</h1>
                     <div className="flex flex-col items-center gap-8 -mx-4 px-5">
                         {filtered.map(recipe =>
-                            <RecipeCard key={recipe.id} recipe={recipe} type={type as 'original' | 'fusion'} />
+                            <RecipeCard key={recipe.id} recipe={recipe} />
                         )}
                     </div>
                 </section>

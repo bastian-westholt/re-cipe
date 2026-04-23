@@ -1,5 +1,6 @@
 import { Outlet, useLocation } from "react-router-dom";
 import { useEffect, useState, type ReactNode } from "react";
+import SelectionBar from "../fusion/SelectionBar";
 import { Joyride } from 'react-joyride'
 import type { EventData, Step } from 'react-joyride'
 import CustomTooltip from './CustomTooltip'
@@ -34,7 +35,7 @@ export default function WalktroughLayout() {
 
     const seen = JSON.parse(localStorage.getItem('walktrough') || '{}')
 
-    const steps = tourSteps[pathname]
+    const steps = tourSteps[pathname] ?? []
     const shouldRun = ready && steps.length > 0 && !seen[pathname]
 
     function handleEvent(data: EventData) {
@@ -47,6 +48,7 @@ export default function WalktroughLayout() {
 
     return (
         <>
+            <SelectionBar />
             <Outlet />
             <Joyride
                 steps={steps}

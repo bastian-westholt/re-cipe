@@ -4,15 +4,18 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { Tick02Icon } from "hugeicons-react"
 
-interface GenerateFormProps {
-    feedback?: boolean
-}
+export default function RegenerateForm() {
 
-export default function GenerateForm({ feedback=false }: GenerateFormProps) {
+    // — Router
     const navigate = useNavigate()
+
+    // — State
     const [feedbackText, setFeedbackText] = useState('')
+
+    // — Store
     const { generateFusion, saveFusion } = useFusionContext()
 
+    // — Styles
     const textareaClass = clsx(
         "w-full min-h-20 max-h-50 px-4 py-3",
         "outline-none resize-none overflow-y-scroll",
@@ -30,21 +33,24 @@ export default function GenerateForm({ feedback=false }: GenerateFormProps) {
     )
 
     return (
-        <form className="fixed bottom-5 left-1/2 -translate-x-1/2 w-[90dvw] md:w-96 lg:w-125 flex flex-col gap-2" onSubmit={(e) => { e.preventDefault; generateFusion() }}>
-            {feedback && (
-                <textarea
-                    className={textareaClass}
-                    value={feedbackText}
-                    onChange={e => setFeedbackText(e.target.value)}
-                />
-            )}
+        <form
+            className="fixed bottom-5 left-1/2 -translate-x-1/2 w-[90dvw] md:w-96 lg:w-125 flex flex-col gap-2"
+            onSubmit={(e) => { e.preventDefault(); generateFusion(feedbackText || undefined) }}
+        >
+            <textarea
+                className={textareaClass}
+                value={feedbackText}
+                onChange={e => setFeedbackText(e.target.value)}
+                placeholder="Feedback eingeben..."
+            />
             <div className="flex gap-2">
                 <button className={bigButtonClass} type="submit">
-                    <p className="font-display -translate-x-3">{feedback ? "REGENERATE" : "GENERATE FUSION"}</p>
+                    <p className="font-display -translate-x-3">REGENERATE</p>
                 </button>
-                {feedback && (<button className={smallButtonClass} onClick={() => saveFusion(navigate)}>
+                {/* type="button" verhindert Form-Submit */}
+                <button type="button" className={smallButtonClass} onClick={() => saveFusion(navigate)}>
                     <Tick02Icon />
-                </button>)}
+                </button>
             </div>
         </form>
     )

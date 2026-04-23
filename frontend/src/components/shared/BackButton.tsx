@@ -2,6 +2,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { ArrowLeft02Icon } from "hugeicons-react"
 import clsx from "clsx";
 import { useFusionContext } from "../../store/fusionStore";
+import { useFilterStore } from "../../store/filterStore";
 
 interface BackButtonProps {
     variant?: string
@@ -9,12 +10,15 @@ interface BackButtonProps {
 
 export default function BackButton({ variant='default' }: BackButtonProps) {
 
+    // — Router
     const navigate = useNavigate()
+    const location = useLocation()
 
-    const { resetStore } = useFusionContext()
+    // — Store
+    const { resetFusionStore } = useFusionContext()
+    const { resetFilterStore } = useFilterStore()
 
-    const { state } = useLocation()
-
+    // — Styles
     const backButtonClass = clsx(
         "flex items-center justify-center",
         variant === 'icon' ? "w-auto h-auto mr-1" : "w-11 h-11",
@@ -22,12 +26,12 @@ export default function BackButton({ variant='default' }: BackButtonProps) {
     )
 
     function handleClick() {
-        resetStore()
-        if (state === "fusion") {
-            navigate('/')
-            return
-        }
-        navigate(-1)
+        // Stores cleanen damit kein veralteter State auf der Zielseite landet
+        resetFusionStore()
+        resetFilterStore()
+        // location.state?.from wird beim Navigieren mitgegeben (z.B. aus BottomNav oder Cards).
+        // Fallback zu "/" wenn kein from-State vorhanden ist.
+        navigate(location.state?.from ?? "/")
     }
 
     return (

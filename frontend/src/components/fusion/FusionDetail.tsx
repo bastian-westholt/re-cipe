@@ -9,7 +9,7 @@ import IngedientsList from "../recipe/IngedientsList"
 import StepsList from "../recipe/StepsList"
 import { Pot01Icon, Knife02Icon, ServingFoodIcon } from "hugeicons-react"
 import { useFusionContext } from "../../store/fusionStore"
-import GenerateForm from "./GenerateForm"
+import RegenerateForm from "./RegenerateForm"
 import { Heatmap } from '@paper-design/shaders-react';
 
 export default function FusionDetail() {
@@ -21,12 +21,10 @@ export default function FusionDetail() {
     // — State
     const { imageUrl } = useFusionContext()
     const recipe = useFusionContext().currentFusion!
+    
     const [servings, setServings] = useState<number>(recipe.servings || 4)
 
     // — Effects
-    useEffect(() => {
-        window.scrollTo(0, 0)
-    }, [])
 
     // — Styles
     const heroSectionClass = clsx(
@@ -82,7 +80,7 @@ export default function FusionDetail() {
                 <IngedientsList recipe={recipe} servings={servings} />
                 <StepsList recipe={recipe} />
             </section>
-            <GenerateForm feedback />
+            <RegenerateForm />
         </>
     )
 }

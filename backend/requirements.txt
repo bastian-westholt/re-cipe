@@ -7,3 +7,4 @@ pgvector
 psycopg2-binary
 alembic
 python-dotenv
+gunicorn

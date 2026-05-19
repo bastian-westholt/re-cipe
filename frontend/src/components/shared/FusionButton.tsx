@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import { BlenderIcon, Tick02Icon } from 'hugeicons-react'
-import { getTypeBG, getTypeColor, getTypePara } from '../../utils/styles';
+import { getTypeBG, getTypePara } from '../../utils/styles';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { useFusionContext } from '../../store/fusionStore';
 

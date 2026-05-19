@@ -3,7 +3,6 @@ import { useRef, useEffect } from "react"
 import { useSearchParams, useLocation, useNavigate } from "react-router-dom"
 import { useSearchStore } from "../store/searchStore"
 import FusionButton from "./shared/FusionButton"
-import ApplyButton from "./shared/ApplyButton"
 import FilterButton from "./shared/FilterButton"
 import SearchButton from "./shared/SearchButton"
 import CloseButton from "./shared/CloseButton"
@@ -64,7 +63,7 @@ export default function BottomNav() {
         }
     }
 
-    function setParam(key: string, value: string) {
+/*     function setParam(key: string, value: string) {
         if (location.pathname !== '/browse') {
             navigate('/browse', { state: { from: location.pathname } })
         }
@@ -72,7 +71,7 @@ export default function BottomNav() {
             prev.set(key, value)
             return prev
         })
-    }
+    } */
 
     function aiSearchHandler() {
         setIsAiSearch(!isAiSearch)

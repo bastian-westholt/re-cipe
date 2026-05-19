@@ -1,6 +1,6 @@
 import clsx from "clsx"
 import { useTranslation } from "react-i18next"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { getLang } from "../../utils/lang"
 import BackButton from "../shared/BackButton"
 import Badge from "../shared/Badge"

@@ -4,7 +4,6 @@ import { useRecipesStore } from "../../../store/recipesStore";
 import { useTranslation } from "react-i18next"
 import { useFilterStore } from "../../../store/filterStore";
 import { useState } from "react";
-import type { Recipe } from "../../../types/recipe";
 import { selectionFilter } from "../../../utils/filter";
 import { getTypeBG } from "../../../utils/styles";
 
@@ -31,7 +30,7 @@ export default function FilterSelection({ children, filterKey, bilingual, multip
     const { recipes } = useRecipesStore()
 
     // — Derived
-    const isFilterActive = filterKey in activeFilters
+    /* const isFilterActive = filterKey in activeFilters */
     const options = selectionFilter(recipes, type, filterKey, bilingual ? currentLang : undefined)
 
     function handleFilterLabel() {

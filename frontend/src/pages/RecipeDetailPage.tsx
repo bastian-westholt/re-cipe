@@ -1,5 +1,5 @@
 import clsx from "clsx"
-import { useParams, Link, useSearchParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import FusionButton from "../components/shared/FusionButton"
 import FavoriteButton from "../components/shared/FavoriteButton"
 import Badge from "../components/shared/Badge"

@@ -1,6 +1,5 @@
 import { useSearchParams } from "react-router-dom"
 import { useTranslation } from "react-i18next"
-import { Tick02Icon } from "hugeicons-react"
 import { useRecipesStore } from "../../store/recipesStore"
 import { useFusionContext } from "../../store/fusionStore"
 import { getLang } from "../../utils/lang"

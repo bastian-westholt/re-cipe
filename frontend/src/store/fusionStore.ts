@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import type { Recipe } from "../types/recipe";
 import type { NavigateFunction } from "react-router-dom";
+const API_URL = import.meta.env.VITE_API_URL
 
 interface FusionStore {
     selectedRecipes: Recipe[]
@@ -50,7 +51,7 @@ export const useFusionContext = create<FusionStore>((set, get) => ({
             { role: "user", content: feedback },
         ] : []
 
-        fetch('http://127.0.0.1:5001/recipes/fusion/create', {
+        fetch(`${API_URL}/recipes/fusion/create`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -78,7 +79,7 @@ export const useFusionContext = create<FusionStore>((set, get) => ({
         if (get().isGenerating) return
         set({ isGenerating: true })
         const { selectedRecipes, currentFusion, imageUrl } = get()
-        fetch('http://127.0.0.1:5001/recipes/fusion/save', {
+        fetch(`${API_URL}/recipes/fusion/save`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

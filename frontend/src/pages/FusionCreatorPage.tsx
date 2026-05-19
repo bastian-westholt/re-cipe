@@ -4,6 +4,8 @@ import { useFusionContext } from "../store/fusionStore";
 import FusionDetail from "../components/fusion/FusionDetail";
 import LoadingAnimation from "../components/fusion/LoadingAnimation";
 import RecipePicker from "../components/fusion/RecipePicker";
+const API_URL = import.meta.env.VITE_API_URL
+
 
 export default function FusionCreatorPage() {
 
@@ -32,7 +34,7 @@ export default function FusionCreatorPage() {
         if (state && selectedRecipes.length === 0) {
             resetFusionStore()
             setIsPickerActive(true)
-            fetch(`http://127.0.0.1:5001/recipes/${state.id}`)
+            fetch(`${API_URL}/recipes/${state.id}`)
                 .then(res => res.json())
                 .then(data => {
                     setSelectedRecipes([data])

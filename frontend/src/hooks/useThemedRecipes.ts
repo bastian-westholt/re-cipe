@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react"
 import { useSearchParams } from "react-router-dom"
 import type { Recipe } from "../types/recipe"
+const API_URL = import.meta.env.VITE_API_URL
+
 
 export function useThemedRecipes(title: string): Recipe[] {
     const [recipes, setRecipes] = useState<Recipe[]>([])
@@ -8,7 +10,7 @@ export function useThemedRecipes(title: string): Recipe[] {
     const type = searchParams.get("type") ?? "original"
 
     useEffect(() => {
-        fetch("http://127.0.0.1:5001/recipes/themes", {
+        fetch(`${API_URL}/recipes/themes`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ title })

@@ -8,6 +8,7 @@ import LangToggle from "../components/feed/LangToggle"
 import BottomNav from "../components/BottomNav"
 import { useFusionContext } from "../store/fusionStore"
 import BackButton from "../components/shared/BackButton"
+const API_URL = import.meta.env.VITE_API_URL
 
 export default function BrowsePage() {
 
@@ -36,7 +37,7 @@ export default function BrowsePage() {
     // Fetch nur wenn der Store noch leer ist — Rezepte werden global gecacht (recipesStore)
     useEffect(() => {
         if (recipes.length > 0) return
-        fetch('http://127.0.0.1:5001/recipes')
+        fetch(`${API_URL}/recipes`)
             .then(res => res.json())
             .then(data => setRecipes(data))
     }, [])

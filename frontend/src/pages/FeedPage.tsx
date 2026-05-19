@@ -10,6 +10,7 @@ import BottomNav from "../components/BottomNav"
 import { useThemedRecipes } from "../hooks/useThemedRecipes"
 import FeaturedCard from "../components/shared/sections/FeaturedCard"
 import { useFusionContext } from "../store/fusionStore"
+const API_URL = import.meta.env.VITE_API_URL
 
 export default function FeedPage() {
 
@@ -47,7 +48,7 @@ export default function FeedPage() {
 
     // Einmaliger Fetch aller Rezepte beim ersten Mount
     useEffect(() => {
-        fetch('http://127.0.0.1:5001/recipes')
+        fetch(`${API_URL}/recipes`)
             .then(res => res.json())
             .then(data => setRecipes(data))
     }, [])

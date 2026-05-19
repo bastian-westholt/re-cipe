@@ -15,6 +15,7 @@ import BackButton from "../components/shared/BackButton"
 import { RecipeSection } from "../components/shared/sections"
 import RecipeCard from "../components/shared/sections/RecipeCard"
 import { useRelatedRecipes } from "../hooks/useRelatedRecipes"
+const API_URL = import.meta.env.VITE_API_URL
 
 export default function RecipeDetailPage() {
 
@@ -34,7 +35,7 @@ export default function RecipeDetailPage() {
     useEffect(() => { window.scrollTo(0, 0) }, [])
 
     useEffect(() => {
-        fetch(`http://127.0.0.1:5001/recipes/${id}`)
+        fetch(`${API_URL}/recipes/${id}`)
             .then(res => res.json())
             .then(data => {
                 setRecipe(data)
